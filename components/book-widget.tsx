@@ -20,7 +20,7 @@ const BookWidget = ({ image, name, author }: BookWidgetProps) => {
           <p className="whitespace-nowrap text-2xl">{name}</p>
           <Button
             variant="link"
-            className="whitespace-nowrap text-xl font-light p-0 m-0"
+            className="whitespace-nowrap text-xl font-light p-0 h-min m-0"
           >
             {author}
           </Button>

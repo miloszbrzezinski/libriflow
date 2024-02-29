@@ -10,7 +10,7 @@ import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
 import { useCurrentUser } from "@/hooks/use-current-user";
 import { LogoutButton } from "@/components/auth/logout-button";
 import { User, X } from "lucide-react";
-import { Separator } from "@radix-ui/react-separator";
+import { Separator } from "../ui/separator";
 
 export const UserButton = () => {
   const user = useCurrentUser();
