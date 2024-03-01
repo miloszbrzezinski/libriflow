@@ -1,3 +1,4 @@
+import Navbar from "@/components/navbar";
 import { ThemeProvider } from "@/components/providers/theme-provider";
 import Sidebar from "@/components/sidebar";
 

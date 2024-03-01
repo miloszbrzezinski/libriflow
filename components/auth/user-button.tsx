@@ -24,8 +24,10 @@ export const UserButton = () => {
       <DropdownMenuTrigger className="outline-none">
         <Avatar>
           <AvatarImage src={user?.image || ""} />
-          <AvatarFallback className="bg-gradient-to-r from-emerald-800 to-sky-900">
-            <p className="text-white text-xl"> {Array.from(user.name!)[0]}</p>
+          <AvatarFallback className="border border-green-950 bg-transparent">
+            <p className="text-green-950 text-xl">
+              {Array.from(user.name!)[0]}
+            </p>
           </AvatarFallback>
         </Avatar>
       </DropdownMenuTrigger>
