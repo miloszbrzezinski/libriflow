@@ -22,9 +22,11 @@ const Sidebar = () => {
           onClick={() => {
             router.push(`/add-book`);
           }}
-          className="p-2 flex items-center justify-center rounded-full hover:shadow-md hover:rounded-lg transition-all hover:bg-emerald-800/30 bg-emerald-800/10"
+          className="group flex items-center"
         >
-          <Plus strokeWidth={0.5} className="w-10 h-10" />
+          <div className="p-2 flex items-center justify-center rounded-[50px] group-hover:shadow-md group-hover:rounded-lg overflow-hidden transition-all group-hover:bg-emerald-800/30 bg-emerald-800/10">
+            <Plus strokeWidth={0.5} className="w-10 h-10" />
+          </div>
         </button>
       </ul>
     </nav>
