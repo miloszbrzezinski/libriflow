@@ -82,5 +82,6 @@ export const AddBookSchema = z.object({
     message: "Genre is required",
   }),
   bookPublisher: z.string(),
+  bookISBN: z.string(),
   bookDescription: z.string(),
 });

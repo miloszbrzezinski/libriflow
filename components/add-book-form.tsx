@@ -16,6 +16,7 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Button } from "@/components/ui/button";
+import { Textarea } from "./ui/textarea";
 
 export const AddBookForm = () => {
   const [error, setError] = useState<string | undefined>("");
@@ -29,6 +30,7 @@ export const AddBookForm = () => {
       bookAuthor: "",
       bookGenre: "",
       bookPublisher: "",
+      bookISBN: "",
       bookDescription: "",
     },
   });
@@ -49,94 +51,123 @@ export const AddBookForm = () => {
       <Form {...form}>
         <form
           onSubmit={form.handleSubmit(onSubmit)}
-          className="space-y-6 w-full flex flex-col"
+          className="space-y-6 w-full h-full flex flex-col"
         >
-          <div className="space-y-4 w-96 flex flex-col">
-            <FormField
-              control={form.control}
-              name="bookName"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel>Title</FormLabel>
-                  <FormControl>
-                    <Input
-                      {...field}
-                      disabled={isPending}
-                      placeholder="John Doe"
-                    />
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
-            <FormField
-              control={form.control}
-              name="bookAuthor"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel>Author</FormLabel>
-                  <FormControl>
-                    <Input
-                      {...field}
-                      disabled={isPending}
-                      placeholder="John Doe"
-                    />
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
-            <FormField
-              control={form.control}
-              name="bookGenre"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel>Genre</FormLabel>
-                  <FormControl>
-                    <Input
-                      {...field}
-                      disabled={isPending}
-                      placeholder="John Doe"
-                    />
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
-            <FormField
-              control={form.control}
-              name="bookPublisher"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel>Publisher</FormLabel>
-                  <FormControl>
-                    <Input
-                      {...field}
-                      disabled={isPending}
-                      placeholder="John Doe"
-                    />
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
-            <FormField
-              control={form.control}
-              name="bookDescription"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel>Description</FormLabel>
-                  <FormControl>
-                    <Input
-                      {...field}
-                      disabled={isPending}
-                      placeholder="John Doe"
-                    />
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
+          <div className="flex flex-col w-full h-full space-y-5">
+            <div className="flex h-full space-x-10">
+              <div className="flex bg-white border mt-7 w-80 grow shadow-md rounded-md items-center justify-center">
+                <span className="text-xl font-semibold text-green-900/40 select-none">
+                  add book cover
+                </span>
+              </div>
+              <div className="space-y-4 w-96 flex flex-col">
+                <FormField
+                  control={form.control}
+                  name="bookName"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel>Title</FormLabel>
+                      <FormControl>
+                        <Input
+                          {...field}
+                          disabled={isPending}
+                          placeholder="..."
+                        />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+                <FormField
+                  control={form.control}
+                  name="bookAuthor"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel>Author</FormLabel>
+                      <FormControl>
+                        <Input
+                          {...field}
+                          disabled={isPending}
+                          placeholder="e.g. Christophet Hitchens"
+                        />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+                <FormField
+                  control={form.control}
+                  name="bookGenre"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel>Genre</FormLabel>
+                      <FormControl>
+                        <Input
+                          {...field}
+                          disabled={isPending}
+                          placeholder="e.g. Biography, Sci-Fi"
+                        />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+                <FormField
+                  control={form.control}
+                  name="bookPublisher"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel>Publisher</FormLabel>
+                      <FormControl>
+                        <Input
+                          {...field}
+                          disabled={isPending}
+                          placeholder="..."
+                        />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+                <FormField
+                  control={form.control}
+                  name="bookISBN"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel>ISBN</FormLabel>
+                      <FormControl>
+                        <Input
+                          {...field}
+                          disabled={isPending}
+                          placeholder="e.g. 978 1 83895 223 5"
+                        />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+              </div>
+            </div>
+            <div>
+              <FormField
+                control={form.control}
+                name="bookDescription"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Description</FormLabel>
+                    <FormControl>
+                      <Textarea
+                        {...field}
+                        disabled={isPending}
+                        placeholder="..."
+                        className="resize-none h-32"
+                      />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+            </div>
           </div>
           <Button disabled={isPending} type="submit" className="w-full">
             Add

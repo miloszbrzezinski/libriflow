@@ -22,10 +22,10 @@ export const UserButton = () => {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger className="outline-none">
-        <Avatar>
+        <Avatar className="w-12 h-12">
           <AvatarImage src={user?.image || ""} />
           <AvatarFallback className="border border-green-950 bg-transparent">
-            <p className="text-green-950 text-xl">
+            <p className="text-green-950 text-3xl font-light">
               {Array.from(user.name!)[0]}
             </p>
           </AvatarFallback>
