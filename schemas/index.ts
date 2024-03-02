@@ -72,6 +72,7 @@ export const RegisterSchema = z.object({
 });
 
 export const AddBookSchema = z.object({
+  imageUrl: z.string(),
   bookName: z.string().min(1, {
     message: "Name is required",
   }),

@@ -18,15 +18,19 @@ import {
 import { Button } from "@/components/ui/button";
 import { Textarea } from "./ui/textarea";
 import { FileUpload } from "./file-upload";
+import { useCurrentUser } from "@/hooks/use-current-user";
+import { addBook } from "@/actions/add-book";
 
 export const AddBookForm = () => {
   const [error, setError] = useState<string | undefined>("");
   const [success, setSuccess] = useState<string | undefined>("");
   const [isPending, startTransition] = useTransition();
+  const user = useCurrentUser();
 
   const form = useForm<z.infer<typeof AddBookSchema>>({
     resolver: zodResolver(AddBookSchema),
     defaultValues: {
+      imageUrl: "",
       bookName: "",
       bookAuthor: "",
       bookGenre: "",
@@ -37,14 +41,14 @@ export const AddBookForm = () => {
   });
 
   const onSubmit = (values: z.infer<typeof AddBookSchema>) => {
-    // setError("");
-    // setSuccess("");
-    // startTransition(() => {
-    //   register(values).then((data) => {
-    //     setError(data.error);
-    //     setSuccess(data.success);
-    //   });
-    // });
+    setError("");
+    setSuccess("");
+    startTransition(() => {
+      addBook(user!.id!, values).then((data) => {
+        setError(data.error);
+        setSuccess(data.success);
+      });
+    });
   };
 
   return (
