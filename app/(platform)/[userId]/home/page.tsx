@@ -1,10 +1,4 @@
 import Navbar from "@/components/navbar";
-import { cn } from "@/lib/utils";
-import localFont from "next/font/local";
-
-const headingFont = localFont({
-  src: "./../../../public/fonts/IstokWeb-Regular.ttf",
-});
 
 const HomePage = () => {
   return (

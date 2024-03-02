@@ -20,7 +20,7 @@ const Sidebar = () => {
         </SidebarButton>
         <button
           onClick={() => {
-            router.push(`/add-book`);
+            router.push(`add-book`);
           }}
           className="group flex items-center"
         >

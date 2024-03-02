@@ -1,23 +1,13 @@
-import { cn } from "@/lib/utils";
-import localFont from "next/font/local";
+"use client";
 
-const headingFont = localFont({
-  src: "./../../public/fonts/IstokWeb-Regular.ttf",
-});
+import { useCurrentUser } from "@/hooks/use-current-user";
+import { redirect, useRouter } from "next/navigation";
 
 const LibraryPage = () => {
-  return (
-    <div className="flex w-full h-full bg-gradient-to-br from-slate-300  to-amber-100 backdrop-blur-sm p-5">
-      <p
-        className={cn(
-          "text-5xl font-light text-slate-800",
-          headingFont.className,
-        )}
-      >
-        libriflow
-      </p>
-    </div>
-  );
+  const user = useCurrentUser();
+  const router = useRouter();
+
+  router.push(`/${user?.id}/home`);
 };
 
 export default LibraryPage;

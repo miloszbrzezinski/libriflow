@@ -2,30 +2,29 @@ import Image from "next/image";
 import { Badge } from "./ui/badge";
 import { Check, Heart } from "lucide-react";
 import { Button } from "./ui/button";
+import { Book } from "@prisma/client";
 
 interface BookWidgetProps {
-  image: string;
-  name: string;
-  author: string;
+  book: Book;
 }
 
-const BookWidget = ({ image, name, author }: BookWidgetProps) => {
+const BookWidget = ({ book }: BookWidgetProps) => {
   return (
     <div className="flex p-2 bg-white rounded-lg shadow-md w-min">
       <div className="w-48">
-        <Image src={image} alt="book" height={100} width={200} />
+        <Image src={book.imageUrl} alt="book" height={100} width={200} />
       </div>
       <div className="p-2 justify-between flex flex-col">
         <div>
-          <p className="whitespace-nowrap text-2xl">{name}</p>
+          <p className="whitespace-nowrap text-2xl">{book.bookName}</p>
           <Button
             variant="link"
             className="whitespace-nowrap text-xl font-light p-0 h-min m-0"
           >
-            {author}
+            {book.bookAuthor}
           </Button>
           <div>
-            <Badge className="font-light">Biography</Badge>
+            <Badge className="font-light">{book.bookGenre}</Badge>
           </div>
         </div>
         <div className="flex gap-2">
