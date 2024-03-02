@@ -17,6 +17,7 @@ import {
 } from "@/components/ui/form";
 import { Button } from "@/components/ui/button";
 import { Textarea } from "./ui/textarea";
+import { FileUpload } from "./file-upload";
 
 export const AddBookForm = () => {
   const [error, setError] = useState<string | undefined>("");
@@ -56,9 +57,21 @@ export const AddBookForm = () => {
           <div className="flex flex-col w-full h-full space-y-5">
             <div className="flex h-full space-x-10">
               <div className="flex bg-white border mt-7 w-80 grow shadow-md rounded-md items-center justify-center">
-                <span className="text-xl font-semibold text-green-900/40 select-none">
-                  add book cover
-                </span>
+                <FormField
+                  control={form.control}
+                  name="imageUrl"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormControl>
+                        <FileUpload
+                          endpoint="serverImage"
+                          value={field.value}
+                          onChange={field.onChange}
+                        />
+                      </FormControl>
+                    </FormItem>
+                  )}
+                />
               </div>
               <div className="space-y-4 w-96 flex flex-col">
                 <FormField
