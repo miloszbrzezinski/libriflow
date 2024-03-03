@@ -20,6 +20,8 @@ import { Textarea } from "./ui/textarea";
 import { FileUpload } from "./file-upload";
 import { useCurrentUser } from "@/hooks/use-current-user";
 import { addBook } from "@/actions/add-book";
+import { AuthorSelector } from "./author-selector";
+import { useParams, useRouter } from "next/navigation";
 
 export const AddBookForm = () => {
   const [error, setError] = useState<string | undefined>("");
@@ -40,13 +42,17 @@ export const AddBookForm = () => {
     },
   });
 
+  const params = useParams();
+  const router = useRouter();
+
   const onSubmit = (values: z.infer<typeof AddBookSchema>) => {
     setError("");
     setSuccess("");
     startTransition(() => {
       addBook(user!.id!, values).then((data) => {
-        setError(data.error);
-        setSuccess(data.success);
+        if (data.success) {
+          router.push(`library`);
+        }
       });
     });
   };

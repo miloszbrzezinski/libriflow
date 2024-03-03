@@ -30,6 +30,7 @@ model User {
   role                  UserRole               @default(USER)
   accounts              Account[]
   books                 Book[]
+  authors               Author[]
   isTwoFactorEnabled    Boolean                @default(false)
   twoFactorConfirmation TwoFactorConfirmation?
 }
@@ -95,7 +96,6 @@ model Book {
   imageUrl        String
   isFavourite     Boolean    @default(false)
   bookName        String
-  bookAuthor      String
   bookGenre       String
   bookPublisher   String
   bookISBN        String
@@ -105,7 +105,11 @@ model Book {
   userId String
   user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
 
+  authorId String
+  author   Author @relation(fields: [authorId], references: [id], onDelete: Cascade)
+
   @@index([userId])
+  @@index([authorId])
 }
 
 enum BookStatus {
@@ -113,4 +117,16 @@ enum BookStatus {
   READING
   NOT_REDED
   WISH_LIST
+}
+
+model Author {
+  id       String @id @default(cuid())
+  imageUrl String
+  name     String
+
+  userId String
+  user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
+  books  Book[]
+
+  @@index([userId])
 }

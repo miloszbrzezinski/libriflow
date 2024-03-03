@@ -35,18 +35,23 @@ export const addBook = async (
   await db.user.update({
     where: {
       id: userId,
-      email: "bzeziu@gmail.com",
     },
     data: {
       books: {
         create: {
           imageUrl,
           bookName,
-          bookAuthor,
           bookGenre,
           bookPublisher,
           bookISBN,
           bookDescription,
+          author: {
+            create: {
+              userId,
+              name: bookAuthor,
+              imageUrl: "",
+            },
+          },
         },
       },
     },

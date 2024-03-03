@@ -16,13 +16,14 @@ import {
 import BookStatusButton from "./book-status-button";
 import { useParams, useRouter } from "next/navigation";
 import { bookFavourite } from "@/actions/book-favourite";
+import { BookWithAuthors } from "@/types";
 
 const headingFont = localFont({
   src: "./../public/fonts/IstokWeb-Regular.ttf",
 });
 
 interface BookBarProps {
-  book: Book;
+  book: BookWithAuthors;
 }
 
 const BookBar = ({ book }: BookBarProps) => {
@@ -41,13 +42,14 @@ const BookBar = ({ book }: BookBarProps) => {
   return (
     <div className="flex justify-between w-full">
       <div className="flex space-x-5">
-        <div className="w-36">
-          <Image
-            src={book.imageUrl}
-            alt="book cover"
-            height={100}
-            width={200}
-          />
+        <div className="w-36 h-54">
+          {book.imageUrl.length > 0 ? (
+            <Image src={book.imageUrl} alt="book" height={100} width={200} />
+          ) : (
+            <div className="w-full h-full items-center justify-center flex bg-neutral-200">
+              <p>No book cover</p>
+            </div>
+          )}
         </div>
         <div className="flex flex-col justify-between">
           <div className="flex flex-col space-y-4">
@@ -61,12 +63,15 @@ const BookBar = ({ book }: BookBarProps) => {
                 {book.bookName}
               </p>
               <Button
+                onClick={() => {
+                  router.push(`/${params.userId}/authors/${book.author.id}`);
+                }}
                 variant="link"
                 className={cn(
                   "text-3xl font-extralight text-slate-800 px-0 py-0 w-min h-min",
                 )}
               >
-                {book.bookAuthor}
+                {book.author.name}
               </Button>
               <p className="text-2xl font-thin">{book.bookPublisher}</p>
             </div>

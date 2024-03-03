@@ -6,9 +6,10 @@ import { Button } from "./ui/button";
 import { Book, BookStatus } from "@prisma/client";
 import { useParams, usePathname, useRouter } from "next/navigation";
 import { cn } from "@/lib/utils";
+import { BookWithAuthors } from "@/types";
 
 interface BookWidgetProps {
-  book: Book;
+  book: BookWithAuthors;
 }
 
 const BookWidget = ({ book }: BookWidgetProps) => {
@@ -17,7 +18,7 @@ const BookWidget = ({ book }: BookWidgetProps) => {
   const pathname = usePathname();
 
   const onClick = () => {
-    router.push(`book/${book.id}`);
+    router.push(`library/book/${book.id}`);
   };
 
   return (
@@ -26,7 +27,13 @@ const BookWidget = ({ book }: BookWidgetProps) => {
       className="group flex p-2 bg-white rounded-lg shadow-md w-min"
     >
       <div className="w-48">
-        <Image src={book.imageUrl} alt="book" height={100} width={200} />
+        {book.imageUrl.length > 0 ? (
+          <Image src={book.imageUrl} alt="book" height={100} width={200} />
+        ) : (
+          <div className="w-full h-full items-center justify-center flex bg-neutral-200">
+            <p>No book cover</p>
+          </div>
+        )}
       </div>
       <div className="p-2 justify-between flex flex-col">
         <div>
@@ -35,7 +42,7 @@ const BookWidget = ({ book }: BookWidgetProps) => {
             variant="link"
             className="whitespace-nowrap text-xl font-light p-0 h-min m-0"
           >
-            {book.bookAuthor}
+            {book.author.name}
           </Button>
           <p className="whitespace-nowrap text-md font-extralight">
             {book.bookPublisher}
@@ -55,25 +62,25 @@ const BookWidget = ({ book }: BookWidgetProps) => {
             )}
           >
             {book.bookStatus === BookStatus.READED && (
-              <div className="flex space-x-2 text-white">
+              <div className="flex space-x-2 text-white whitespace-nowrap">
                 <Check strokeWidth={1} />
                 <span>Readed</span>
               </div>
             )}
             {book.bookStatus === BookStatus.READING && (
-              <div className="flex space-x-2 text-white">
+              <div className="flex space-x-2 text-white whitespace-nowrap">
                 <Loader strokeWidth={1} />
                 <span>Reading</span>
               </div>
             )}
             {book.bookStatus === BookStatus.NOT_REDED && (
-              <div className="flex space-x-2 text-white">
+              <div className="flex space-x-2 text-white whitespace-nowrap">
                 <X strokeWidth={1} />
                 <span>Not readed</span>
               </div>
             )}
             {book.bookStatus === BookStatus.WISH_LIST && (
-              <div className="flex space-x-2 text-white">
+              <div className="flex space-x-2 text-white whitespace-nowrap">
                 <Gift strokeWidth={1} />
                 <span>Wish list</span>
               </div>
