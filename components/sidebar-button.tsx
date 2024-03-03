@@ -15,7 +15,7 @@ const SidebarButton = ({ href, name, children }: SidebarButtonProps) => {
   const pathname = usePathname();
 
   const onClick = () => {
-    router.push(`${href}`);
+    router.push(`/${params.userId}/${href}`);
   };
   return (
     <li

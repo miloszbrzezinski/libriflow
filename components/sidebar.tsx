@@ -1,10 +1,11 @@
 "use client";
 import { Cog, Heart, Home, Library, Plus, PlusCircle } from "lucide-react";
 import SidebarButton from "./sidebar-button";
-import { useRouter } from "next/navigation";
+import { useParams, useRouter } from "next/navigation";
 
 const Sidebar = () => {
   const router = useRouter();
+  const params = useParams();
 
   return (
     <nav className="flex w-20 h-full bg-white shadow-md shadow-neutral-500 items-center justify-center">
@@ -20,7 +21,7 @@ const Sidebar = () => {
         </SidebarButton>
         <button
           onClick={() => {
-            router.push(`add-book`);
+            router.push(`/${params.userId}/add-book`);
           }}
           className="group flex items-center"
         >

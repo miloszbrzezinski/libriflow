@@ -1,16 +1,29 @@
+"use client";
 import Image from "next/image";
 import { Badge } from "./ui/badge";
 import { Check, Heart } from "lucide-react";
 import { Button } from "./ui/button";
 import { Book } from "@prisma/client";
+import { useParams, usePathname, useRouter } from "next/navigation";
 
 interface BookWidgetProps {
   book: Book;
 }
 
 const BookWidget = ({ book }: BookWidgetProps) => {
+  const params = useParams();
+  const router = useRouter();
+  const pathname = usePathname();
+
+  const onClick = () => {
+    router.push(`book/${book.id}`);
+  };
+
   return (
-    <div className="flex p-2 bg-white rounded-lg shadow-md w-min">
+    <div
+      onClick={onClick}
+      className="group flex p-2 bg-white rounded-lg shadow-md w-min"
+    >
       <div className="w-48">
         <Image src={book.imageUrl} alt="book" height={100} width={200} />
       </div>
