@@ -93,6 +93,7 @@ model TwoFactorConfirmation {
 model Book {
   id              String     @id @default(cuid())
   imageUrl        String
+  isFavourite     Boolean    @default(false)
   bookName        String
   bookAuthor      String
   bookGenre       String

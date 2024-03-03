@@ -25,10 +25,14 @@ const LibraryPage = async ({
   }
 
   return (
-    <div className="flex flex-col w-full h-full bg-neutral-200 p-5">
+    <div className="flex flex-col w-full h-full bg-amber-50/20 p-5">
       <BookBar book={book} />
       <Separator className="my-4 bg-green-950" />
-      <div className="flex gap-2 w-full"></div>
+      <div className="flex gap-2 w-full items-center justify-center">
+        <div className="text-lg w-[80%]">
+          <p>{book.bookDescription}</p>
+        </div>
+      </div>
     </div>
   );
 };
