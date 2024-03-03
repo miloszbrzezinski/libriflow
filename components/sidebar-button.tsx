@@ -21,8 +21,9 @@ const SidebarButton = ({ href, name, children }: SidebarButtonProps) => {
     <li
       onClick={onClick}
       className={cn(
-        "p-2 items-center justify-center flex rounded-lg hover:bg-emerald-800/30 hover:shadow-md",
-        pathname.split("/")[2] === href && "bg-emerald-800/30 shadow-lg",
+        "p-2 items-center justify-center flex rounded-lg hover:bg-slate-300 hover:shadow-md",
+        pathname.split("/")[2] === href &&
+          "bg-slate-600 hover:bg-slate-500 shadow-lg text-white",
       )}
     >
       {children}

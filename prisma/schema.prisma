@@ -91,17 +91,25 @@ model TwoFactorConfirmation {
 }
 
 model Book {
-  id              String @id @default(cuid())
+  id              String     @id @default(cuid())
   imageUrl        String
   bookName        String
   bookAuthor      String
   bookGenre       String
   bookPublisher   String
   bookISBN        String
-  bookDescription String @db.Text
+  bookDescription String     @db.Text
+  bookStatus      BookStatus @default(NOT_REDED)
 
   userId String
   user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
 
-  @@unique([userId])
+  @@index([userId])
+}
+
+enum BookStatus {
+  READED
+  READING
+  NOT_REDED
+  WISH_LIST
 }

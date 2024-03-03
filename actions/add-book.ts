@@ -6,6 +6,7 @@ import bcrypt from "bcryptjs";
 import { db } from "@/lib/db";
 import { AddBookSchema, RegisterSchema } from "@/schemas";
 import { getUserByEmail } from "@/data/user";
+import { BookStatus } from "@prisma/client";
 // import { sendVerificationEmail } from "@/lib/mail";
 // import { generateVerificationToken } from "@/lib/tokens";
 
@@ -29,9 +30,12 @@ export const addBook = async (
     bookDescription,
   } = validatedFields.data;
 
+  console.log(userId);
+
   await db.user.update({
     where: {
       id: userId,
+      email: "bzeziu@gmail.com",
     },
     data: {
       books: {

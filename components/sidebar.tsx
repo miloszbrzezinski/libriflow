@@ -25,8 +25,11 @@ const Sidebar = () => {
           }}
           className="group flex items-center"
         >
-          <div className="p-2 flex items-center justify-center rounded-[50px] group-hover:shadow-md group-hover:rounded-lg overflow-hidden transition-all group-hover:bg-emerald-800/30 bg-emerald-800/10">
-            <Plus strokeWidth={0.5} className="w-10 h-10" />
+          <div className="p-2 flex items-center justify-center rounded-[50px] group-hover:shadow-md group-hover:rounded-lg overflow-hidden transition-all group-hover:bg-slate-600 bg-slate-600">
+            <Plus
+              strokeWidth={0.5}
+              className="w-10 h-10 text-white group-hover:text-white"
+            />
           </div>
         </button>
       </ul>

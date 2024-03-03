@@ -2,7 +2,7 @@ import Navbar from "@/components/navbar";
 
 const HomePage = () => {
   return (
-    <div className="flex w-full h-full bg-gradient-to-br from-slate-300  to-amber-100 backdrop-blur-sm p-5">
+    <div className="flex w-full h-full bg-neutral-200 p-5">
       <Navbar title="home" />
     </div>
   );
