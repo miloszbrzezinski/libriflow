@@ -1,5 +1,6 @@
 import AuthorBar from "@/components/author-bar";
 import BookBar from "@/components/book-bar";
+import BookItem from "@/components/book-item";
 import BookWidget from "@/components/book-widget";
 import Navbar from "@/components/navbar";
 import { Separator } from "@/components/ui/separator";
@@ -16,7 +17,11 @@ const AuthorPage = async ({
       id: params.authorId,
     },
     include: {
-      books: true,
+      books: {
+        include: {
+          author: true,
+        },
+      },
     },
   });
 
@@ -32,8 +37,10 @@ const AuthorPage = async ({
     <div className="flex flex-col w-full h-full bg-amber-50/20 p-5">
       <AuthorBar author={author} />
       <Separator className="my-4 bg-green-950" />
-      <div className="flex gap-2 w-full items-center justify-center">
-        <div className="text-lg w-[80%]"></div>
+      <div className="flex flex-col gap-[1px] w-full pt-10">
+        {author.books.map((book) => (
+          <BookItem key={book.id} book={book} />
+        ))}
       </div>
     </div>
   );

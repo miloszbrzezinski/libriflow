@@ -3,7 +3,7 @@ import localFont from "next/font/local";
 import { UserButton } from "./auth/user-button";
 
 const headingFont = localFont({
-  src: "./../public/fonts/IstokWeb-Regular.ttf",
+  src: "./../public/fonts/Lora-Regular.ttf",
 });
 interface NavbarProps {
   title: string;
