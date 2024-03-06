@@ -64,7 +64,10 @@ const BookBar = ({ book }: BookBarProps) => {
               >
                 <p>{book.bookName}</p>
                 <div className="ml-auto flex items-center gap-x-2">
-                  <Edit className="hidden group-hover:block w-6 h-6 text-slate-700 hover:text-slate-700 dark:text-zinc-400 dark:hover:text-zinc-300 transition" />
+                  <Edit
+                    onClick={() => onOpen("editBook", { book })}
+                    className="hidden group-hover:block w-6 h-6 text-slate-700 hover:text-slate-700 dark:text-zinc-400 dark:hover:text-zinc-300 transition"
+                  />
                   <Trash
                     onClick={() => onOpen("deleteBook", { book })}
                     className="hidden group-hover:block w-6 h-6 text-slate-700 hover:text-rose-700 dark:text-zinc-400 dark:hover:text-zinc-300 transition"
