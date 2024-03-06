@@ -6,15 +6,12 @@ import * as z from "zod";
 import {
   Dialog,
   DialogContent,
-  DialogDescription,
-  DialogFooter,
   DialogHeader,
   DialogTitle,
 } from "@/components/ui/dialog";
 import { useModal } from "@/hooks/use-modal-store";
 import { Button } from "@/components/ui/button";
 import { Separator } from "../ui/separator";
-import { deleteBook } from "@/actions/delete-book";
 import {
   Form,
   FormControl,
@@ -23,7 +20,7 @@ import {
   FormLabel,
   FormMessage,
 } from "../ui/form";
-import { FileUpload } from "../file-upload";
+import { FileUpload } from "../cover-upload";
 import { Input } from "../ui/input";
 import { Textarea } from "../ui/textarea";
 import { useForm } from "react-hook-form";

@@ -17,7 +17,7 @@ import {
 } from "@/components/ui/form";
 import { Button } from "@/components/ui/button";
 import { Textarea } from "./ui/textarea";
-import { FileUpload } from "./file-upload";
+import { FileUpload } from "./cover-upload";
 import { useCurrentUser } from "@/hooks/use-current-user";
 import { addBook } from "@/actions/add-book";
 import { AuthorSelector } from "./author-selector";

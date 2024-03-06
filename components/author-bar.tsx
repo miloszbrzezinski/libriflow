@@ -9,26 +9,34 @@ import { Check, Edit, Heart, PenTool, Star, Trash } from "lucide-react";
 import BookStatusButton from "./book-status-button";
 import { useParams, useRouter } from "next/navigation";
 import { bookFavourite } from "@/actions/book-favourite";
-import { BookWithAuthors } from "@/types";
+import { AuthorWithBooks, BookWithAuthors } from "@/types";
+import { useModal } from "@/hooks/use-modal-store";
 
 const headingFont = localFont({
   src: "./../public/fonts/Lora-Regular.ttf",
 });
 
 interface AuthorBarProps {
-  author: Author;
+  author: AuthorWithBooks;
 }
 
 const AuthorBar = ({ author }: AuthorBarProps) => {
   const params = useParams();
   const router = useRouter();
+  const { onOpen } = useModal();
 
   return (
     <div className="flex justify-between w-full">
       <div className="flex space-x-5 items-center">
         <div className="w-36 h-36 border-8 border-white rounded-full">
           {author.imageUrl.length > 0 ? (
-            <Image src={author.imageUrl} alt="book" height={100} width={200} />
+            <Image
+              src={author.imageUrl}
+              alt="author image"
+              height={100}
+              width={200}
+              className="rounded-full"
+            />
           ) : (
             <div className="w-full h-full rounded-full items-center justify-center flex bg-neutral-200">
               <PenTool />
@@ -46,9 +54,16 @@ const AuthorBar = ({ author }: AuthorBarProps) => {
               >
                 <p>{author.name}</p>
                 <div className="ml-auto flex items-center gap-x-2">
-                  <Edit className="hidden group-hover:block w-6 h-6 text-slate-700 hover:text-slate-700 dark:text-zinc-400 dark:hover:text-zinc-300 transition" />
+                  <Edit
+                    onClick={() => onOpen("editAuthor", { author })}
+                    className="hidden group-hover:block w-6 h-6 text-slate-700 hover:text-slate-700 dark:text-zinc-400 dark:hover:text-zinc-300 transition"
+                  />
                 </div>
               </div>
+              <p className={cn("text-xl font-light text-slate-800 p-0 m-0")}>
+                <span className="font-medium">{author.books.length}</span> books
+                in library
+              </p>
             </div>
           </div>
         </div>

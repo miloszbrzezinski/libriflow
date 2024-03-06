@@ -7,3 +7,7 @@ export type BookWithAuthors = Book & {
 export type UserWithBooks = User & {
   books: Book[];
 };
+
+export type AuthorWithBooks = Author & {
+  books: Book[];
+};

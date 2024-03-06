@@ -18,7 +18,13 @@ const AuthorItem = ({ author }: AuthorItemProps) => {
     <div onClick={onClick} className="flex w-full bg-white p-2 space-x-5">
       <div className="w-32 h-32 rounded-full">
         {author.imageUrl.length > 0 ? (
-          <Image src={author.imageUrl} alt="book" height={100} width={200} />
+          <Image
+            src={author.imageUrl}
+            alt="book"
+            height={100}
+            width={200}
+            className="rounded-full"
+          />
         ) : (
           <div className="w-full h-full rounded-full items-center justify-center flex bg-neutral-200">
             <PenTool />

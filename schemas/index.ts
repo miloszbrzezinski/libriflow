@@ -86,3 +86,10 @@ export const AddBookSchema = z.object({
   bookISBN: z.string(),
   bookDescription: z.string(),
 });
+
+export const EditAuthor = z.object({
+  imageUrl: z.string(),
+  authorName: z.string().min(1, {
+    message: "Name is required",
+  }),
+});
