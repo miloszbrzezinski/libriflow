@@ -28,6 +28,7 @@ export const editBook = async (
     bookGenre,
     bookPublisher,
     bookISBN,
+    bookYear,
     bookDescription,
   } = validatedFields.data;
 
@@ -48,6 +49,7 @@ export const editBook = async (
             bookName,
             bookGenre,
             bookPublisher,
+            bookYear: String(bookYear),
             bookISBN,
           },
         },

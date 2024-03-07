@@ -5,7 +5,7 @@ const FriendsList = () => {
   return (
     <div className="flex flex-col gap-2">
       <div className="flex justify-between">
-        <p className="text-2xl font-light">Friends</p>
+        <p className="text-2xl font-light">Following</p>
         <UserPlus strokeWidth={1} className="w-8 h-8" />
       </div>
       <Separator className="bg-slate-800 shadow-md" />

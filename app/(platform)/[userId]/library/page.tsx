@@ -1,6 +1,8 @@
 import BookWidget from "@/components/book-widget";
 import Navbar from "@/components/navbar";
+import { Button } from "@/components/ui/button";
 import { db } from "@/lib/db";
+import Link from "next/link";
 
 const LibraryPage = async ({ params }: { params: { userId: string } }) => {
   const books = await db.book.findMany({
@@ -39,7 +41,17 @@ const LibraryPage = async ({ params }: { params: { userId: string } }) => {
           Wish list
         </div>
       </div>
-      <div className="grid grid-flow-row-dense lg:grid-cols-4 sm:grid-cols-2 grid-cols-1 gap-4 pt-10">
+      {books.length === 0 && (
+        <div className="flex flex-col w-full h-full items-center justify-center space-y-5">
+          <p className="text-4xl text-slate-700">
+            You do not have any books yet
+          </p>
+          <Link href={"add-book"} className="hover:underline">
+            Add first here
+          </Link>
+        </div>
+      )}
+      <div className="grid grid-flow-row-dense lg:grid-cols-4 sm:grid-cols-2 grid-cols-1 gap-4 pt-10 ">
         {books.map((book) => (
           <BookWidget key={book.id} book={book} />
         ))}

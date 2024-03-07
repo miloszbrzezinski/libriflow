@@ -84,6 +84,7 @@ export const AddBookSchema = z.object({
   }),
   bookPublisher: z.string(),
   bookISBN: z.string(),
+  bookYear: z.coerce.number(),
   bookDescription: z.string(),
 });
 

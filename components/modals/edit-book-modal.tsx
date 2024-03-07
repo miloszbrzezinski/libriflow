@@ -59,6 +59,7 @@ export const EditBookModal = () => {
       form.setValue("bookAuthor", book.author.name);
       form.setValue("bookGenre", book.bookGenre);
       form.setValue("bookPublisher", book.bookPublisher);
+      form.setValue("bookYear", +book.bookYear);
       form.setValue("bookISBN", book.bookISBN);
     }
   }, [form, book]);
@@ -169,6 +170,23 @@ export const EditBookModal = () => {
                     render={({ field }) => (
                       <FormItem>
                         <FormLabel>Publisher</FormLabel>
+                        <FormControl>
+                          <Input
+                            {...field}
+                            disabled={isPending}
+                            placeholder="..."
+                          />
+                        </FormControl>
+                        <FormMessage />
+                      </FormItem>
+                    )}
+                  />
+                  <FormField
+                    control={form.control}
+                    name="bookYear"
+                    render={({ field }) => (
+                      <FormItem>
+                        <FormLabel>Release year</FormLabel>
                         <FormControl>
                           <Input
                             {...field}

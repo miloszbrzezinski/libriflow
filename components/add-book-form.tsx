@@ -154,6 +154,23 @@ export const AddBookForm = () => {
                 />
                 <FormField
                   control={form.control}
+                  name="bookYear"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel>Release year</FormLabel>
+                      <FormControl>
+                        <Input
+                          {...field}
+                          disabled={isPending}
+                          placeholder="e.g. 1984"
+                        />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+                <FormField
+                  control={form.control}
                   name="bookISBN"
                   render={({ field }) => (
                     <FormItem>

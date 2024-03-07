@@ -27,6 +27,7 @@ export const addBook = async (
     bookGenre,
     bookPublisher,
     bookISBN,
+    bookYear,
     bookDescription,
   } = validatedFields.data;
 
@@ -45,6 +46,7 @@ export const addBook = async (
           bookPublisher,
           bookISBN,
           bookDescription,
+          bookYear: String(bookYear),
           author: {
             create: {
               userId,

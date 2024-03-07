@@ -30,7 +30,7 @@ const BookWidget = ({ book }: BookWidgetProps) => {
         {book.imageUrl.length > 0 ? (
           <Image src={book.imageUrl} alt="book" height={100} width={200} />
         ) : (
-          <div className="w-full h-full items-center justify-center flex bg-neutral-200">
+          <div className="w-full h-72 items-center justify-center flex bg-neutral-200">
             <p>No book cover</p>
           </div>
         )}

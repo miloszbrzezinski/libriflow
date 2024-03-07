@@ -1,13 +1,9 @@
-import BookWidget from "@/components/book-widget";
-import FavBooksList from "@/components/books-list";
+import BooksList from "@/components/books-list";
 import FriendsList from "@/components/friends-list";
-import Navbar from "@/components/navbar";
 import QuotesList from "@/components/quotes-list";
-import { Separator } from "@/components/ui/separator";
 import UserBar from "@/components/user-bar";
 import { db } from "@/lib/db";
 import { BookStatus } from "@prisma/client";
-import { UserPlus } from "lucide-react";
 
 const HomePage = async ({
   params,
@@ -43,7 +39,7 @@ const HomePage = async ({
           <FriendsList />
           <QuotesList />
         </div>
-        <FavBooksList books={currentBooks} />
+        <BooksList books={currentBooks} noBooksMesage="Nothing here" />
       </div>
     </div>
   );

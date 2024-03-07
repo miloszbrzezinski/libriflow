@@ -21,18 +21,30 @@ enum UserRole {
 }
 
 model User {
-  id                    String                 @id @default(cuid())
-  name                  String?
-  email                 String?                @unique
-  emailVerified         DateTime?
-  image                 String?
-  password              String?
-  role                  UserRole               @default(USER)
-  accounts              Account[]
-  books                 Book[]
-  authors               Author[]
+  id            String    @id @default(cuid())
+  name          String?
+  email         String?   @unique
+  emailVerified DateTime?
+  image         String?
+  password      String?
+  role          UserRole  @default(USER)
+  accounts      Account[]
+  books         Book[]
+  authors       Author[]
+  followers     User[]    @relation("followers")
+  following     User[]    @relation("following")
+
   isTwoFactorEnabled    Boolean                @default(false)
   twoFactorConfirmation TwoFactorConfirmation?
+
+  Follower User?   @relation(name: "followers", fields: [userId], references: [id])
+  userId   String?
+
+  Following   User?   @relation(name: "following", fields: [followingId], references: [id])
+  followingId String?
+
+  @@index([userId])
+  @@index([followingId])
 }
 
 model Account {
@@ -99,8 +111,11 @@ model Book {
   bookGenre       String
   bookPublisher   String
   bookISBN        String
+  bookYear        String
   bookDescription String     @db.Text
   bookStatus      BookStatus @default(NOT_REDED)
+
+  bookNotes BookNote[]
 
   userId String
   user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
@@ -110,6 +125,18 @@ model Book {
 
   @@index([userId])
   @@index([authorId])
+}
+
+model BookNote {
+  id          String  @id @default(cuid())
+  note        String  @db.Text
+  page        Int
+  isQuotation Boolean
+
+  bookId String
+  book   Book   @relation(fields: [bookId], references: [id], onDelete: Cascade)
+
+  @@index([bookId])
 }
 
 enum BookStatus {
