@@ -87,6 +87,10 @@ export const AddBookSchema = z.object({
   bookDescription: z.string(),
 });
 
+export const EditBookDescription = z.object({
+  bookDescription: z.string(),
+});
+
 export const EditAuthor = z.object({
   imageUrl: z.string(),
   authorName: z.string().min(1, {

@@ -1,4 +1,5 @@
 import BookBar from "@/components/book-bar";
+import BookDescription from "@/components/book-description";
 import BookWidget from "@/components/book-widget";
 import Navbar from "@/components/navbar";
 import { Separator } from "@/components/ui/separator";
@@ -32,9 +33,7 @@ const LibraryPage = async ({
       <BookBar book={book} />
       <Separator className="my-4 bg-green-950" />
       <div className="flex gap-2 w-full items-center justify-center">
-        <div className="text-lg w-[80%]">
-          <p>{book.bookDescription}</p>
-        </div>
+        <BookDescription book={book} />
       </div>
     </div>
   );
