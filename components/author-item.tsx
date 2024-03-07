@@ -23,7 +23,7 @@ const AuthorItem = ({ author }: AuthorItemProps) => {
             alt="book"
             height={100}
             width={200}
-            className="rounded-full"
+            className="rounded-full w-32 h-32"
           />
         ) : (
           <div className="w-full h-full rounded-full items-center justify-center flex bg-neutral-200">

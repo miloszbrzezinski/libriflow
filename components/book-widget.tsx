@@ -26,7 +26,7 @@ const BookWidget = ({ book }: BookWidgetProps) => {
       onClick={onClick}
       className="group flex p-2 bg-white rounded-lg shadow-md w-min"
     >
-      <div className="w-48">
+      <div className="w-48 items-center flex">
         {book.imageUrl.length > 0 ? (
           <Image src={book.imageUrl} alt="book" height={100} width={200} />
         ) : (

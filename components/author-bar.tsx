@@ -35,7 +35,7 @@ const AuthorBar = ({ author }: AuthorBarProps) => {
               alt="author image"
               height={100}
               width={200}
-              className="rounded-full"
+              className="rounded-full w-32 h-32"
             />
           ) : (
             <div className="w-full h-full rounded-full items-center justify-center flex bg-neutral-200">
@@ -61,8 +61,8 @@ const AuthorBar = ({ author }: AuthorBarProps) => {
                 </div>
               </div>
               <p className={cn("text-xl font-light text-slate-800 p-0 m-0")}>
-                <span className="font-medium">{author.books.length}</span> books
-                in library
+                <span className="font-medium">{author.books.length}</span> book
+                {author.books.length > 1 && <span>s</span>} in library
               </p>
             </div>
           </div>

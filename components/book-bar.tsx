@@ -58,7 +58,7 @@ const BookBar = ({ book }: BookBarProps) => {
             <div className="flex flex-col justify-start space-y-0">
               <div
                 className={cn(
-                  "group space-x-4 flex justify-center items-center text-5xl font-light text-slate-800 p-0 m-0",
+                  "group space-x-4 flex justify-start items-center text-5xl font-light text-slate-800 p-0 m-0",
                   headingFont.className,
                 )}
               >

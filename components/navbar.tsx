@@ -20,7 +20,6 @@ const Navbar = ({ title }: NavbarProps) => {
       >
         {title}
       </p>
-      <UserButton />
     </nav>
   );
 };

@@ -11,6 +11,12 @@ import { useCurrentUser } from "@/hooks/use-current-user";
 import { LogoutButton } from "@/components/auth/logout-button";
 import { User, X } from "lucide-react";
 import { Separator } from "../ui/separator";
+import localFont from "next/font/local";
+import { cn } from "@/lib/utils";
+
+const headingFont = localFont({
+  src: "./../../public/fonts/Lora-Regular.ttf",
+});
 
 export const UserButton = () => {
   const user = useCurrentUser();
@@ -25,7 +31,12 @@ export const UserButton = () => {
         <Avatar className="w-12 h-12">
           <AvatarImage src={user?.image || ""} />
           <AvatarFallback className="border border-green-950 bg-transparent">
-            <p className="text-green-950 text-3xl font-light">
+            <p
+              className={cn(
+                "text-green-950 text-3xl font-light",
+                headingFont.className,
+              )}
+            >
               {Array.from(user.name!)[0]}
             </p>
           </AvatarFallback>
