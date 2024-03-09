@@ -7,10 +7,14 @@ import { useState } from "react";
 import { cn } from "@/lib/utils";
 import { Form, FormControl, FormField, FormItem } from "./ui/form";
 import BookNoteForm from "./add-book-note-form";
+import { BookNote } from "@prisma/client";
 
-const BookNoteItem = () => {
+interface BookNoteItemProps {
+  note: BookNote;
+}
+
+const BookNoteItem = ({ note }: BookNoteItemProps) => {
   const [editing, setEditing] = useState(false);
-  const [isQuote, setIsQuote] = useState(false);
 
   const cancelEditing = () => {
     setEditing(false);
@@ -19,7 +23,7 @@ const BookNoteItem = () => {
   return (
     <div>
       {editing ? (
-        <BookNoteForm cancelEditing={cancelEditing} />
+        <BookNoteForm cancelEditing={cancelEditing} bookNote={note} />
       ) : (
         <div className="group flex space-x-3">
           <div className="flex space-x-2">
@@ -28,7 +32,7 @@ const BookNoteItem = () => {
                 <Edit
                   className={cn(
                     "text-transparent",
-                    isQuote
+                    note.isQuotation
                       ? "group-hover:text-yellow-600"
                       : "group-hover:text-emerald-800",
                   )}
@@ -37,7 +41,7 @@ const BookNoteItem = () => {
                   }}
                 />
                 <div>
-                  {isQuote ? (
+                  {note.isQuotation ? (
                     <Quote
                       strokeWidth={2}
                       className="text-yellow-600 w-7 h-7"
@@ -54,20 +58,21 @@ const BookNoteItem = () => {
               <div
                 className={cn(
                   "flex flex-col items-end",
-                  isQuote ? "text-yellow-800" : "text-emerald-800",
+                  note.isQuotation ? "text-yellow-800" : "text-emerald-800",
                 )}
               >
                 <Label>Page</Label>
-                <Label className="text-2xl">324</Label>
+                <Label className="text-2xl">{note.page}</Label>
               </div>
             </div>
             <div
               className={cn(
                 "flex w-2 h-full",
-                isQuote ? "bg-yellow-600" : "bg-emerald-800",
+                note.isQuotation ? "bg-yellow-600" : "bg-emerald-800",
               )}
             />
           </div>
+          <p>{note.note}</p>
         </div>
       )}
     </div>

@@ -98,3 +98,8 @@ export const EditAuthor = z.object({
     message: "Name is required",
   }),
 });
+
+export const BookNoteSchema = z.object({
+  pageNo: z.coerce.number(),
+  bookNote: z.string(),
+});

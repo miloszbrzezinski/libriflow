@@ -7,8 +7,13 @@ import { Textarea } from "./ui/textarea";
 import { Label } from "./ui/label";
 import { NotebookPen, Quote } from "lucide-react";
 import BookNoteItem from "./book-note-item";
+import { BookNote } from "@prisma/client";
 
-const BookNotesList = () => {
+interface BookNotesListProps {
+  notes: BookNote[];
+}
+
+const BookNotesList = ({ notes }: BookNotesListProps) => {
   const { onOpen } = useModal();
   return (
     <div className="flex flex-col w-full h-full pt-12 px-44">
@@ -26,7 +31,9 @@ const BookNotesList = () => {
       </div>
       <Separator className="my-4 bg-green-950" />
       <div className="flex flex-col space-y-4">
-        <BookNoteItem />
+        {notes.map((note) => (
+          <BookNoteItem key={note.id} note={note} />
+        ))}
       </div>
     </div>
   );

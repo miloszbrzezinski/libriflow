@@ -19,6 +19,7 @@ const LibraryPage = async ({
     },
     include: {
       author: true,
+      bookNotes: true,
     },
   });
 
@@ -36,7 +37,7 @@ const LibraryPage = async ({
       <Separator className="my-4 bg-green-950" />
       <div className="flex flex-col gap-2 w-full items-center justify-center">
         <BookDescription book={book} />
-        <BookNotesList />
+        <BookNotesList notes={book.bookNotes} />
       </div>
     </div>
   );
