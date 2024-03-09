@@ -1,9 +1,9 @@
 "use client";
 import { getUserWithData } from "@/actions/user";
-import BooksList from "@/components/books-list";
+import { BooksList } from "@/components/books-list";
 import FriendsList from "@/components/friends-list";
 import QuotesList from "@/components/quotes-list";
-import UserBar from "@/components/user-bar";
+import { UserBar } from "@/components/user-bar";
 import { useCurrentUser } from "@/hooks/use-current-user";
 import { db } from "@/lib/db";
 import { BookWithAuthors } from "@/types";
@@ -30,20 +30,18 @@ const HomePage = () => {
     );
   }
 
-  if (!user) {
-    return;
-  }
-
   return (
     <div className="flex flex-col w-full h-full bg-amber-50/20 p-5 overflow-y-scroll">
-      {books && <UserBar books={books} />}
+      {books ? <UserBar books={books} /> : <UserBar.Skeleton />}
       <div className="flex gap-10 w-full pt-10 h-full justify-center">
         <div className="flex flex-col w-2/3 h-full gap-20 p-2">
           <FriendsList />
           <QuotesList />
         </div>
-        {currentBooks && (
+        {currentBooks ? (
           <BooksList books={currentBooks!} noBooksMesage="Nothing here" />
+        ) : (
+          <BooksList.Skeleton />
         )}
       </div>
     </div>

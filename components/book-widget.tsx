@@ -7,12 +7,13 @@ import { Book, BookStatus } from "@prisma/client";
 import { useParams, usePathname, useRouter } from "next/navigation";
 import { cn } from "@/lib/utils";
 import { BookWithAuthors } from "@/types";
+import { Skeleton } from "./ui/skeleton";
 
 interface BookWidgetProps {
   book: BookWithAuthors;
 }
 
-const BookWidget = ({ book }: BookWidgetProps) => {
+export const BookWidget = ({ book }: BookWidgetProps) => {
   const params = useParams();
   const router = useRouter();
   const pathname = usePathname();
@@ -99,4 +100,19 @@ const BookWidget = ({ book }: BookWidgetProps) => {
   );
 };
 
-export default BookWidget;
+BookWidget.Skeleton = function SkeletonBookWidget() {
+  return (
+    <div className="group flex p-2 bg-stone-500 rounded-lg shadow-md w-min">
+      <Skeleton className="min-w-48 min-h-72 items-center flex" />
+      <div className="p-2 justify-between flex flex-col">
+        <div className="space-y-2">
+          <Skeleton className="h-8 w-40" />
+          <Skeleton className="h-8 w-36" />
+        </div>
+        <div className="flex gap-2">
+          <div className="flex w-10"></div>
+        </div>
+      </div>
+    </div>
+  );
+};

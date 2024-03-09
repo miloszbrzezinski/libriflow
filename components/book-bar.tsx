@@ -58,7 +58,7 @@ const BookBar = ({ book }: BookBarProps) => {
             className={cn(
               "bg-transparent w-full border-slate-500 space-x-3 hover:bg-rose-300 hover:text-rose-900",
               book.isFavourite &&
-                "bg-gradient-to-tr from-rose-900 to-rose-700 text-white space-x-2 hover:from-rose-800 hover:to-rose-600 hover:text-white",
+                "bg-gradient-to-tr from-rose-900 to-rose-700 border-rose-500 text-white space-x-2 hover:from-rose-800 hover:to-rose-600 hover:text-white",
             )}
           >
             {book.isFavourite && <Heart strokeWidth={1} />}

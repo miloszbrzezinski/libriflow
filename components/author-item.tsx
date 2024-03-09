@@ -3,12 +3,13 @@ import { Author } from "@prisma/client";
 import { PenTool } from "lucide-react";
 import Image from "next/image";
 import { useParams, usePathname, useRouter } from "next/navigation";
+import { Skeleton } from "./ui/skeleton";
 
 interface AuthorItemProps {
   author: Author;
 }
 
-const AuthorItem = ({ author }: AuthorItemProps) => {
+export const AuthorItem = ({ author }: AuthorItemProps) => {
   const router = useRouter();
 
   const onClick = () => {
@@ -38,4 +39,13 @@ const AuthorItem = ({ author }: AuthorItemProps) => {
   );
 };
 
-export default AuthorItem;
+AuthorItem.Skeleton = function SkeletonAuthorItem() {
+  return (
+    <div className="flex w-full bg-white p-2 space-x-5">
+      <Skeleton className="w-32 h-32 rounded-full" />
+      <div className="h-full flex items-center">
+        <Skeleton className="h-8 w-40" />
+      </div>
+    </div>
+  );
+};

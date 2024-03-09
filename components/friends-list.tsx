@@ -11,51 +11,7 @@ const FriendsList = () => {
       <Separator className="bg-slate-800 shadow-md" />
       <div className="flex items-center gap-4 w-full pb-5  overflow-x-scroll">
         <div className="flex flex-col items-center justify-center space-y-2">
-          <div className="flex min-w-36 min-h-36 bg-stone-500 rounded-full" />
-          <p>John Smith</p>
-        </div>
-        <div className="flex flex-col items-center justify-center space-y-2">
-          <div className="flex min-w-36 min-h-36 bg-stone-500 rounded-full" />
-          <p>John Smith</p>
-        </div>
-        <div className="flex flex-col items-center justify-center space-y-2">
-          <div className="flex min-w-36 min-h-36 bg-stone-500 rounded-full" />
-          <p>John Smith</p>
-        </div>
-        <div className="flex flex-col items-center justify-center space-y-2">
-          <div className="flex min-w-36 min-h-36 bg-stone-500 rounded-full" />
-          <p>John Smith</p>
-        </div>
-        <div className="flex flex-col items-center justify-center space-y-2">
-          <div className="flex min-w-36 min-h-36 bg-stone-500 rounded-full" />
-          <p>John Smith</p>
-        </div>
-        <div className="flex flex-col items-center justify-center space-y-2">
-          <div className="flex min-w-36 min-h-36 bg-stone-500 rounded-full" />
-          <p>John Smith</p>
-        </div>
-        <div className="flex flex-col items-center justify-center space-y-2">
-          <div className="flex min-w-36 min-h-36 bg-stone-500 rounded-full" />
-          <p>John Smith</p>
-        </div>
-        <div className="flex flex-col items-center justify-center space-y-2">
-          <div className="flex min-w-36 min-h-36 bg-stone-500 rounded-full" />
-          <p>John Smith</p>
-        </div>
-        <div className="flex flex-col items-center justify-center space-y-2">
-          <div className="flex min-w-36 min-h-36 bg-stone-500 rounded-full" />
-          <p>John Smith</p>
-        </div>
-        <div className="flex flex-col items-center justify-center space-y-2">
-          <div className="flex min-w-36 min-h-36 bg-stone-500 rounded-full" />
-          <p>John Smith</p>
-        </div>
-        <div className="flex flex-col items-center justify-center space-y-2">
-          <div className="flex min-w-36 min-h-36 bg-stone-500 rounded-full" />
-          <p>John Smith</p>
-        </div>
-        <div className="flex flex-col items-center justify-center space-y-2">
-          <div className="flex min-w-36 min-h-36 bg-stone-500 rounded-full" />
+          <div className="flex min-w-36 min-h-36 bg-stone-400 rounded-full" />
           <p>John Smith</p>
         </div>
       </div>

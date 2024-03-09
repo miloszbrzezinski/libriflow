@@ -1,13 +1,14 @@
 import { BookWithAuthors } from "@/types";
-import BookWidget from "./book-widget";
+import { BookWidget } from "./book-widget";
 import { Separator } from "./ui/separator";
+import { Skeleton } from "./ui/skeleton";
 
 interface BooksListProps {
   books: BookWithAuthors[];
   noBooksMesage: String;
 }
 
-const BooksList = ({ books, noBooksMesage }: BooksListProps) => {
+export const BooksList = ({ books, noBooksMesage }: BooksListProps) => {
   return (
     <div className="flex flex-col gap-2 w-min p-2 h-full">
       <p className="text-2xl font-light">Reading</p>
@@ -25,4 +26,14 @@ const BooksList = ({ books, noBooksMesage }: BooksListProps) => {
   );
 };
 
-export default BooksList;
+BooksList.Skeleton = function SkeletonBooksList() {
+  return (
+    <div className="flex flex-col gap-2 w-min p-2 h-full">
+      <Skeleton className="h-5 w-40 bg-stone-400" />
+      <Separator className="bg-slate-800 shadow-md" />
+      <div className="h-full flex-col flex gap-2 overflow-y-scroll">
+        <BookWidget.Skeleton />
+      </div>
+    </div>
+  );
+};

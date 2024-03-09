@@ -33,7 +33,7 @@ const Sidebar = () => {
         </SidebarButton>
         <button
           onClick={() => {
-            router.push(`/${params.userId}/add-book`);
+            router.push(`/add-book`);
           }}
           className="group flex items-center"
         >
