@@ -1,7 +1,7 @@
 import AuthorBar from "@/components/author-bar";
 import BookBar from "@/components/book-bar";
 import BookItem from "@/components/book-item";
-import BookWidget from "@/components/book-widget";
+import { BookWidget } from "@/components/book-widget";
 import Navbar from "@/components/navbar";
 import { Separator } from "@/components/ui/separator";
 import { db } from "@/lib/db";

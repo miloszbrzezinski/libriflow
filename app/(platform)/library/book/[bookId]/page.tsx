@@ -2,7 +2,7 @@ import BookBar from "@/components/book-bar";
 import BookDescription from "@/components/book-description";
 import BookNotesList from "@/components/book-notes-list";
 import BookSidebar from "@/components/book-sidebar";
-import BookWidget from "@/components/book-widget";
+import { BookWidget } from "@/components/book-widget";
 import Navbar from "@/components/navbar";
 import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
