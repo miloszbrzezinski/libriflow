@@ -14,12 +14,12 @@ export default async function WorkspaceLayout({
       enableSystem
       disableTransitionOnChange
     >
-      <div className="h-full bg-stone-100 dark:bg-zinc-800">
+      <div className="h-full bg-stone-100">
         <div className="h-full flex ">
           <div className="hidden md:flex h-full w-20 z-40 fixed">
             <Sidebar />
           </div>
-          <div className="w-full md:pl-20 transition-all bg-stone-100 dark:bg-zinc-800">
+          <div className="w-full md:pl-20 transition-all bg-stone-100">
             {children}
           </div>
         </div>
