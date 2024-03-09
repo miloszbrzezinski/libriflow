@@ -54,7 +54,7 @@ const BookDescription = ({ book }: BookDescriptionProps) => {
   };
 
   return (
-    <div className="group flex text-lg w-[80%] h-full space-x-5">
+    <div className="group flex text-md space-x-5 pr-10">
       <div className="flex h-full w-28 space-x-3 justify-end">
         {editing ? (
           <Button
@@ -67,7 +67,7 @@ const BookDescription = ({ book }: BookDescriptionProps) => {
           </Button>
         ) : (
           <Edit
-            className="group-hover:text-stone-500 text-transparent"
+            className="group-hover:text-slate-700 text-transparent"
             onClick={() => {
               setEditing(!editing);
             }}
@@ -75,7 +75,7 @@ const BookDescription = ({ book }: BookDescriptionProps) => {
         )}
         <div
           className={cn(
-            "flex group-hover:bg-stone-500/30 w-2 h-full",
+            "flex bg-slate-500/80 w-2 h-full",
             editing && "bg-stone-500/30",
           )}
         />
@@ -96,7 +96,7 @@ const BookDescription = ({ book }: BookDescriptionProps) => {
                       {...field}
                       disabled={isPending}
                       placeholder="..."
-                      className="resize-none h-96 w-full text-lg"
+                      className="resize-none h-96 w-full text-md"
                     />
                   </FormControl>
                 </FormItem>
@@ -108,7 +108,11 @@ const BookDescription = ({ book }: BookDescriptionProps) => {
           </form>
         </Form>
       ) : (
-        <p>{description}</p>
+        <div className="">
+          {description.split("\n").map((par, index) => (
+            <p key={index}>{par}</p>
+          ))}
+        </div>
       )}
     </div>
   );

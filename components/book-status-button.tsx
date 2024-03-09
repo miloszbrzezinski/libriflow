@@ -36,7 +36,7 @@ const BookStatusButton = ({ bookStatus }: BookStatusButtonProps) => {
     <DropdownMenu>
       <DropdownMenuTrigger
         className={cn(
-          "flex space-x-2 p-2 px-4 outline-none h-min rounded-full select-none",
+          "flex space-x-2 p-1 px-4 outline-none h-min rounded-full select-none text-md w-min whitespace-nowrap",
           bookStatus === BookStatus.READED && "bg-green-700",
           bookStatus === BookStatus.READING && "bg-sky-700",
           bookStatus === BookStatus.NOT_REDED && "bg-neutral-700",
@@ -44,26 +44,26 @@ const BookStatusButton = ({ bookStatus }: BookStatusButtonProps) => {
         )}
       >
         {bookStatus === BookStatus.READED && (
-          <div className="flex space-x-2 text-white">
-            <Check strokeWidth={1} />
+          <div className="flex space-x-2 text-white items-center">
+            <Check strokeWidth={1} className="w-5 h-5" />
             <span>Readed</span>
           </div>
         )}
         {bookStatus === BookStatus.READING && (
-          <div className="flex space-x-2 text-white">
-            <Loader strokeWidth={1} />
+          <div className="flex space-x-2 text-white items-center">
+            <Loader strokeWidth={1} className="w-5 h-5" />
             <span>Reading</span>
           </div>
         )}
         {bookStatus === BookStatus.NOT_REDED && (
-          <div className="flex space-x-2 text-white">
-            <X strokeWidth={1} />
-            <span>Not readed</span>
+          <div className="flex space-x-2 text-white items-center">
+            <X strokeWidth={1} className="w-5 h-5" />
+            <span>Unread</span>
           </div>
         )}
         {bookStatus === BookStatus.WISH_LIST && (
-          <div className="flex space-x-2 text-white">
-            <Gift strokeWidth={1} />
+          <div className="flex space-x-2 text-white items-center">
+            <Gift strokeWidth={1} className="w-5 h-5" />
             <span>Wish list</span>
           </div>
         )}
@@ -75,7 +75,7 @@ const BookStatusButton = ({ bookStatus }: BookStatusButtonProps) => {
             onClick(BookStatus.READED);
           }}
         >
-          <div className="rounded-full flex w-4 h-4 bg-green-700"></div>
+          <div className="rounded-full flex w-4 h-4 bg-green-700" />
           <span>Readed</span>
         </DropdownMenuItem>
         <DropdownMenuItem
@@ -84,7 +84,7 @@ const BookStatusButton = ({ bookStatus }: BookStatusButtonProps) => {
             onClick(BookStatus.READING);
           }}
         >
-          <div className="rounded-full flex w-4 h-4 bg-sky-700"></div>
+          <div className="rounded-full flex w-4 h-4 bg-sky-700" />
           <span>Reading</span>
         </DropdownMenuItem>
         <DropdownMenuItem
@@ -93,8 +93,8 @@ const BookStatusButton = ({ bookStatus }: BookStatusButtonProps) => {
             onClick(BookStatus.NOT_REDED);
           }}
         >
-          <div className="rounded-full flex w-4 h-4 bg-neutral-700"></div>
-          <span>Not readed</span>
+          <div className="rounded-full flex w-4 h-4 bg-neutral-700" />
+          <span>Unread</span>
         </DropdownMenuItem>
         <DropdownMenuItem
           className="space-x-2"
@@ -102,7 +102,7 @@ const BookStatusButton = ({ bookStatus }: BookStatusButtonProps) => {
             onClick(BookStatus.WISH_LIST);
           }}
         >
-          <div className="rounded-full flex w-4 h-4 bg-orange-700"></div>
+          <div className="rounded-full flex w-4 h-4 bg-orange-700" />
           <span>Wish list</span>
         </DropdownMenuItem>
       </DropdownMenuContent>

@@ -16,9 +16,11 @@ interface BookNotesListProps {
 const BookNotesList = ({ notes }: BookNotesListProps) => {
   const { onOpen } = useModal();
   return (
-    <div className="flex flex-col w-full h-full pt-12 px-44">
+    <div className="flex flex-col w-full h-full">
       <div className="flex items-center justify-between">
-        <p className="text-2xl whitespace-nowrap"> Notes and quotes</p>
+        <p className="text-2xl font-light whitespace-nowrap">
+          Notes and quotes
+        </p>
         <Button
           onClick={() => {
             onOpen("addBookNote");

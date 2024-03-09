@@ -42,16 +42,29 @@ const BookBar = ({ book }: BookBarProps) => {
   };
 
   return (
-    <div className="flex justify-between w-full">
+    <div className="flex flex-col w-full space-y-5">
       <div className="flex space-x-5">
-        <div className="w-36 h-54">
+        <div className="min-w-36 h-54 space-y-2">
           {book.imageUrl.length > 0 ? (
-            <Image src={book.imageUrl} alt="book" height={100} width={200} />
+            <Image src={book.imageUrl} alt="book" height={200} width={150} />
           ) : (
             <div className="w-full h-56 items-center justify-center flex bg-neutral-200">
               <p>No book cover</p>
             </div>
           )}
+          <Button
+            onClick={onClick}
+            variant="outline"
+            className={cn(
+              "bg-transparent w-full border-slate-500 space-x-3 hover:bg-rose-300 hover:text-rose-900",
+              book.isFavourite &&
+                "bg-gradient-to-tr from-rose-900 to-rose-700 text-white space-x-2 hover:from-rose-800 hover:to-rose-600 hover:text-white",
+            )}
+          >
+            {book.isFavourite && <Heart strokeWidth={1} />}
+            {book.isFavourite && <span>Favourite</span>}
+            {!book.isFavourite && <span>Add to Favourite</span>}
+          </Button>
         </div>
         <div className="flex flex-col justify-between">
           <div className="flex flex-col space-y-4">
@@ -85,38 +98,19 @@ const BookBar = ({ book }: BookBarProps) => {
               >
                 {book.author.name}
               </Button>
-              <p className="text-2xl font-thin">{book.bookPublisher}</p>
             </div>
-            <Badge className="font-extralight px-4 text-xl w-min">
-              {book.bookGenre}
-            </Badge>
+            <div className="flex space-x-5">
+              <Badge className="font-extralight px-4 text-md w-min">
+                {book.bookGenre}
+              </Badge>
+              <BookStatusButton bookStatus={book.bookStatus} />
+            </div>
           </div>
-          <div>
-            <p>
-              <span className="font-thin">ISBN:</span>
-              {book.bookISBN}
-            </p>
-          </div>
+          <div className="flex w-full"></div>
         </div>
       </div>
-      <div>
-        <div className="flex space-x-4">
-          <BookStatusButton bookStatus={book.bookStatus} />
-          <Button
-            onClick={onClick}
-            variant="outline"
-            className={cn(
-              "bg-transparent border-slate-500 space-x-3 hover:bg-rose-300 hover:text-rose-900",
-              book.isFavourite &&
-                "bg-gradient-to-tr from-rose-900 to-rose-700 text-white space-x-2 hover:from-rose-800 hover:to-rose-600 hover:text-white",
-            )}
-          >
-            {book.isFavourite && <Heart strokeWidth={1} />}
-            {book.isFavourite && <span>Favourite</span>}
-            {!book.isFavourite && <span>Add to Favourite</span>}
-          </Button>
-        </div>
-        <div></div>
+      <div className="flex items-center justify-center">
+        <div className="flex space-x-4"></div>
       </div>
     </div>
   );

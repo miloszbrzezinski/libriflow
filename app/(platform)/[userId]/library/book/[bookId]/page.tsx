@@ -1,6 +1,7 @@
 import BookBar from "@/components/book-bar";
 import BookDescription from "@/components/book-description";
 import BookNotesList from "@/components/book-notes-list";
+import BookSidebar from "@/components/book-sidebar";
 import BookWidget from "@/components/book-widget";
 import Navbar from "@/components/navbar";
 import { Button } from "@/components/ui/button";
@@ -32,11 +33,9 @@ const LibraryPage = async ({
   }
 
   return (
-    <div className="flex flex-col w-full h-full bg-amber-50/20 p-5">
-      <BookBar book={book} />
-      <Separator className="my-4 bg-green-950" />
-      <div className="flex flex-col gap-2 w-full items-center justify-center">
-        <BookDescription book={book} />
+    <div className="flex w-full h-full bg-amber-50/20">
+      <BookSidebar book={book} />
+      <div className="flex flex-col gap-2 w-full items-center justify-center p-5 mb-5 overflow-y-scroll">
         <BookNotesList notes={book.bookNotes} />
       </div>
     </div>

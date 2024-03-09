@@ -26,7 +26,7 @@ const BookWidget = ({ book }: BookWidgetProps) => {
       onClick={onClick}
       className="group flex p-2 bg-white rounded-lg shadow-md w-min"
     >
-      <div className="w-48 items-center flex">
+      <div className="min-w-48 items-center flex">
         {book.imageUrl.length > 0 ? (
           <Image src={book.imageUrl} alt="book" height={100} width={200} />
         ) : (
@@ -37,13 +37,10 @@ const BookWidget = ({ book }: BookWidgetProps) => {
       </div>
       <div className="p-2 justify-between flex flex-col">
         <div>
-          <p className="whitespace-nowrap text-2xl">{book.bookName}</p>
-          <Button
-            variant="link"
-            className="whitespace-nowrap text-xl font-light p-0 h-min m-0"
-          >
+          <p className="text-2xl">{book.bookName}</p>
+          <p className="whitespace-nowrap text-xl font-light p-0 h-min m-0">
             {book.author.name}
-          </Button>
+          </p>
           <p className="whitespace-nowrap text-md font-extralight">
             {book.bookPublisher}
           </p>
@@ -76,7 +73,7 @@ const BookWidget = ({ book }: BookWidgetProps) => {
             {book.bookStatus === BookStatus.NOT_REDED && (
               <div className="flex space-x-2 text-white whitespace-nowrap">
                 <X strokeWidth={1} />
-                <span>Not readed</span>
+                <span>Unread</span>
               </div>
             )}
             {book.bookStatus === BookStatus.WISH_LIST && (
