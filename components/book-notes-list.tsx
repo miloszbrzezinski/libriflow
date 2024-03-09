@@ -8,26 +8,34 @@ import { Label } from "./ui/label";
 import { NotebookPen, Quote } from "lucide-react";
 import BookNoteItem from "./book-note-item";
 import { BookNote } from "@prisma/client";
+import { addBookNote } from "@/actions/add-book-note";
+import { useCurrentUser } from "@/hooks/use-current-user";
+import { useParams, useRouter } from "next/navigation";
 
 interface BookNotesListProps {
   notes: BookNote[];
 }
 
 const BookNotesList = ({ notes }: BookNotesListProps) => {
-  const { onOpen } = useModal();
+  const router = useRouter();
+  const user = useCurrentUser();
+  const params = useParams();
+
+  const newNote = () => {
+    addBookNote(user!.id!, String(params.bookId!)).then((data) => {
+      if (data.success) {
+        router.refresh();
+      }
+    });
+  };
+
   return (
     <div className="flex flex-col w-full h-full">
       <div className="flex items-center justify-between">
         <p className="text-2xl font-light whitespace-nowrap">
           Notes and quotes
         </p>
-        <Button
-          onClick={() => {
-            onOpen("addBookNote");
-          }}
-          variant="outline"
-          className=""
-        >
+        <Button onClick={newNote} className="">
           Add note
         </Button>
       </div>

@@ -1,23 +1,8 @@
 "use server";
 
-import * as z from "zod";
 import { db } from "@/lib/db";
-import { BookNoteSchema } from "@/schemas";
 
-export const addBookNote = async (
-  userId: string,
-  bookId: string,
-  values: z.infer<typeof BookNoteSchema>,
-  isQuotation: boolean,
-) => {
-  const validatedFields = BookNoteSchema.safeParse(values);
-
-  if (!validatedFields.success) {
-    return { error: "Something went wrong!" };
-  }
-
-  const { pageNo, bookNote } = validatedFields.data;
-
+export const addBookNote = async (userId: string, bookId: string) => {
   await db.user.update({
     where: {
       id: userId,
@@ -32,9 +17,9 @@ export const addBookNote = async (
             bookNotes: {
               create: [
                 {
-                  page: pageNo,
-                  note: bookNote,
-                  isQuotation,
+                  page: 0,
+                  note: "new note",
+                  isQuotation: false,
                 },
               ],
             },

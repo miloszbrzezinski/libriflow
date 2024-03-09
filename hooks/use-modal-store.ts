@@ -1,15 +1,17 @@
 import { BookWithAuthors } from "@/types";
-import { Author, Book } from "@prisma/client";
+import { Author, Book, BookNote } from "@prisma/client";
 import { create } from "zustand";
 
 export type ModalType =
   | "editBook"
   | "deleteBook"
+  | "deleteBookNote"
   | "editAuthor"
   | "addBookNote";
 
 interface ModalData {
   book?: BookWithAuthors;
+  bookNote?: BookNote;
   author?: Author;
   apiUrl?: string;
   query?: Record<string, any>;

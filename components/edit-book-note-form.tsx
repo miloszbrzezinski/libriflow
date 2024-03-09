@@ -6,7 +6,14 @@ import { Button } from "./ui/button";
 import { Form, FormControl, FormField, FormItem } from "./ui/form";
 import { Textarea } from "./ui/textarea";
 import { useEffect, useState, useTransition } from "react";
-import { NotebookPen, Quote } from "lucide-react";
+import {
+  Bold,
+  Italic,
+  NotebookPen,
+  Quote,
+  Trash,
+  Underline,
+} from "lucide-react";
 import { Label } from "./ui/label";
 import { Input } from "./ui/input";
 import { useForm } from "react-hook-form";
@@ -15,7 +22,9 @@ import { BookNoteSchema } from "@/schemas";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useParams, useRouter } from "next/navigation";
 import { useCurrentUser } from "@/hooks/use-current-user";
-import { addBookNote } from "@/actions/add-book-note";
+import { editBookNote } from "@/actions/edit-book-note";
+import { ToggleGroup, ToggleGroupItem } from "./ui/toggle-group";
+import { useModal } from "@/hooks/use-modal-store";
 
 interface BookNoteFormProps {
   bookNote: BookNote;
@@ -23,6 +32,7 @@ interface BookNoteFormProps {
 }
 
 const BookNoteForm = ({ bookNote, cancelEditing }: BookNoteFormProps) => {
+  const { onOpen } = useModal();
   const [isQuote, setIsQuote] = useState(false);
   const [isPending, startTransition] = useTransition();
   const router = useRouter();
@@ -45,14 +55,18 @@ const BookNoteForm = ({ bookNote, cancelEditing }: BookNoteFormProps) => {
 
   const onSubmit = (values: z.infer<typeof BookNoteSchema>) => {
     startTransition(() => {
-      addBookNote(user!.id!, String(params.bookId!), values, isQuote).then(
-        (data) => {
-          if (data.success) {
-            cancelEditing();
-            router.refresh();
-          }
-        },
-      );
+      editBookNote(
+        user!.id!,
+        String(params.bookId!),
+        bookNote.id,
+        values,
+        isQuote,
+      ).then((data) => {
+        if (data.success) {
+          cancelEditing();
+          router.refresh();
+        }
+      });
     });
   };
 
@@ -106,18 +120,6 @@ const BookNoteForm = ({ bookNote, cancelEditing }: BookNoteFormProps) => {
                     )}
                   />
                 </div>
-                <div className="flex flex-col w-full space-y-2">
-                  <Button onClick={cancelEditing} variant="outline">
-                    Cancel
-                  </Button>
-                  <Button
-                    variant="default"
-                    type="submit"
-                    className={cn(isQuote ? "bg-yellow-600" : "bg-emerald-800")}
-                  >
-                    Save
-                  </Button>
-                </div>
               </div>
             </div>
             <div
@@ -127,22 +129,60 @@ const BookNoteForm = ({ bookNote, cancelEditing }: BookNoteFormProps) => {
               )}
             />
           </div>
-          <FormField
-            control={form.control}
-            name="bookNote"
-            render={({ field }) => (
-              <FormItem className="w-full">
-                <FormControl>
-                  <Textarea
-                    {...field}
-                    disabled={isPending}
-                    placeholder="..."
-                    className="min-h-96 w-full text-lg"
-                  />
-                </FormControl>
-              </FormItem>
-            )}
-          />
+          <div className="flex flex-col w-full space-y-1">
+            <div className="flex w-full space-x-2">
+              <div className="flex w-full p-1 rounded-sm bg-white border">
+                {/* <ToggleGroup type="multiple" variant="outline">
+                  <ToggleGroupItem value="bold" className="">
+                    <Bold className="w-5 h-5" />
+                  </ToggleGroupItem>
+                  <ToggleGroupItem value="italic" className="">
+                    <Italic className="w-5 h-5" />
+                  </ToggleGroupItem>
+                  <ToggleGroupItem value="underline" className="">
+                    <Underline className="w-5 h-5" />
+                  </ToggleGroupItem>
+                </ToggleGroup> */}
+              </div>
+              <Button
+                onClick={() => {
+                  onOpen("deleteBookNote", { bookNote });
+                }}
+                type="button"
+                variant="destructive"
+                className="p-3"
+              >
+                <Trash strokeWidth={1} />
+              </Button>
+              <Button onClick={cancelEditing} variant="outline">
+                Cancel
+              </Button>
+              <Button
+                variant="default"
+                type="submit"
+                className={cn(isQuote ? "bg-yellow-600" : "bg-emerald-800")}
+              >
+                Save
+              </Button>
+            </div>
+
+            <FormField
+              control={form.control}
+              name="bookNote"
+              render={({ field }) => (
+                <FormItem className="w-full">
+                  <FormControl>
+                    <Textarea
+                      {...field}
+                      disabled={isPending}
+                      placeholder="..."
+                      className="min-h-96 w-full text-lg"
+                    />
+                  </FormControl>
+                </FormItem>
+              )}
+            />
+          </div>
         </div>
       </form>
     </Form>

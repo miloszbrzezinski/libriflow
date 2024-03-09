@@ -20,7 +20,11 @@ const LibraryPage = async ({
     },
     include: {
       author: true,
-      bookNotes: true,
+      bookNotes: {
+        orderBy: {
+          page: "asc",
+        },
+      },
     },
   });
 

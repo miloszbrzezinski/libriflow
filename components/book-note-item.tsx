@@ -6,7 +6,7 @@ import { Textarea } from "./ui/textarea";
 import { useState } from "react";
 import { cn } from "@/lib/utils";
 import { Form, FormControl, FormField, FormItem } from "./ui/form";
-import BookNoteForm from "./add-book-note-form";
+import BookNoteForm from "./edit-book-note-form";
 import { BookNote } from "@prisma/client";
 
 interface BookNoteItemProps {
