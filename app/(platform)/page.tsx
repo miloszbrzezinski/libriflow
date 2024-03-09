@@ -7,7 +7,7 @@ const LibraryPage = () => {
   const user = useCurrentUser();
   const router = useRouter();
 
-  router.push(`/${user?.id}/home`);
+  router.push(`/home`);
 };
 
 export default LibraryPage;

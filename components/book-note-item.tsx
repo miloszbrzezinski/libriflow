@@ -72,7 +72,11 @@ const BookNoteItem = ({ note }: BookNoteItemProps) => {
               )}
             />
           </div>
-          <p>{note.note}</p>
+          <div>
+            {note.note.split("\n").map((par, index) => (
+              <p key={index}>{par}</p>
+            ))}
+          </div>
         </div>
       )}
     </div>

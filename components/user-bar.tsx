@@ -5,19 +5,25 @@ import localFont from "next/font/local";
 import Image from "next/image";
 import { UserIcon } from "lucide-react";
 import { useParams, useRouter } from "next/navigation";
-import { UserWithBooks } from "@/types";
+import { BookWithAuthors, UserWithBooks } from "@/types";
+import { useCurrentUser } from "@/hooks/use-current-user";
 
 const headingFont = localFont({
   src: "./../public/fonts/Lora-Regular.ttf",
 });
 
 interface UserBarProps {
-  user: UserWithBooks;
+  books: BookWithAuthors[];
 }
 
-const UserBar = ({ user }: UserBarProps) => {
+const UserBar = ({ books }: UserBarProps) => {
   const params = useParams();
   const router = useRouter();
+  const user = useCurrentUser();
+
+  if (!user) {
+    return;
+  }
 
   return (
     <div className="flex justify-between w-full">
@@ -43,8 +49,8 @@ const UserBar = ({ user }: UserBarProps) => {
                 {user.name}
               </p>
               <p className={cn("text-xl font-light text-slate-800 p-0 m-0")}>
-                <span className="font-medium">{user.books.length}</span> books
-                in library
+                <span className="font-medium">{books.length}</span> books in
+                library
               </p>
             </div>
           </div>

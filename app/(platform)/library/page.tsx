@@ -1,18 +1,35 @@
+"use client";
+import { getUserWithData } from "@/actions/user";
 import BookWidget from "@/components/book-widget";
 import Navbar from "@/components/navbar";
 import { Button } from "@/components/ui/button";
+import { useCurrentUser } from "@/hooks/use-current-user";
 import { db } from "@/lib/db";
+import { BookWithAuthors } from "@/types";
 import Link from "next/link";
+import { useEffect, useState } from "react";
 
-const LibraryPage = async ({ params }: { params: { userId: string } }) => {
-  const books = await db.book.findMany({
-    where: {
-      userId: params.userId,
-    },
-    include: {
-      author: true,
-    },
-  });
+const LibraryPage = () => {
+  const user = useCurrentUser();
+  const [books, setBooks] = useState<BookWithAuthors[] | undefined>();
+
+  useEffect(() => {
+    getUserWithData(user!.id!).then((data) => {
+      if (data) {
+        setBooks(data.user?.books);
+        console.log(books);
+      }
+    });
+  }, []);
+
+  // const books = await db.book.findMany({
+  //   where: {
+  //     userId: params.userId,
+  //   },
+  //   include: {
+  //     author: true,
+  //   },
+  // });
 
   if (!books) {
     return;

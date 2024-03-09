@@ -1,14 +1,25 @@
+"use client";
+import { getAuthorsWithData } from "@/actions/user";
 import AuthorItem from "@/components/author-item";
 import Navbar from "@/components/navbar";
+import { useCurrentUser } from "@/hooks/use-current-user";
 import { db } from "@/lib/db";
+import { AuthorWithBooks } from "@/types";
+import { Author } from "@prisma/client";
 import Link from "next/link";
+import { useEffect, useState } from "react";
 
-const AuthorsPage = async ({ params }: { params: { userId: string } }) => {
-  const authors = await db.author.findMany({
-    where: {
-      userId: params.userId,
-    },
-  });
+const AuthorsPage = () => {
+  const user = useCurrentUser();
+  const [authors, setAuthors] = useState<Author[] | undefined>();
+
+  useEffect(() => {
+    getAuthorsWithData(user!.id!).then((data) => {
+      if (data) {
+        setAuthors(data!.authors);
+      }
+    });
+  }, []);
 
   if (!authors) {
     return;

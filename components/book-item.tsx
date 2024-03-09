@@ -14,7 +14,7 @@ const BookItem = ({ book }: AuthorItemProps) => {
   const pathname = usePathname();
 
   const onClick = () => {
-    router.push(`/${params.userId}/library/book/${book.id}`);
+    router.push(`/library/book/${book.id}`);
   };
   return (
     <div onClick={onClick} className="flex w-full bg-white p-2 space-x-5">

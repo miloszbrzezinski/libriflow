@@ -15,14 +15,14 @@ const SidebarButton = ({ href, name, children }: SidebarButtonProps) => {
   const pathname = usePathname();
 
   const onClick = () => {
-    router.push(`/${params.userId}/${href}`);
+    router.push(`/${href}`);
   };
   return (
     <li
       onClick={onClick}
       className={cn(
         "p-2 items-center justify-center flex rounded-lg hover:bg-slate-300 hover:shadow-md",
-        pathname.split("/")[2] === href &&
+        pathname.split("/")[1] === href &&
           "bg-slate-600 hover:bg-slate-500 shadow-lg text-white",
       )}
     >

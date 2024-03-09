@@ -41,8 +41,6 @@ export const AddBookForm = () => {
       bookDescription: "",
     },
   });
-
-  const params = useParams();
   const router = useRouter();
 
   const onSubmit = (values: z.infer<typeof AddBookSchema>) => {

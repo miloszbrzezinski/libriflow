@@ -11,6 +11,7 @@ import { BookNote } from "@prisma/client";
 import { addBookNote } from "@/actions/add-book-note";
 import { useCurrentUser } from "@/hooks/use-current-user";
 import { useParams, useRouter } from "next/navigation";
+import { cn } from "@/lib/utils";
 
 interface BookNotesListProps {
   notes: BookNote[];
@@ -40,7 +41,13 @@ const BookNotesList = ({ notes }: BookNotesListProps) => {
         </Button>
       </div>
       <Separator className="my-4 bg-green-950" />
-      <div className="flex flex-col space-y-4">
+      <div
+        className={cn(
+          "flex flex-col space-y-4",
+          notes.length === 0 && "h-full items-center justify-center",
+        )}
+      >
+        {notes.length === 0 && <p>Nothing here</p>}
         {notes.map((note) => (
           <BookNoteItem key={note.id} note={note} />
         ))}
