@@ -75,10 +75,10 @@ const BookDescription = ({ book }: BookDescriptionProps) => {
         )}
         <div
           className={cn(
-            "flex group-hover:bg-stone-500/30 w-3 h-full",
+            "flex group-hover:bg-stone-500/30 w-2 h-full",
             editing && "bg-stone-500/30",
           )}
-        ></div>
+        />
       </div>
       {editing ? (
         <Form {...form}>
