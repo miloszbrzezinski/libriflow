@@ -22,7 +22,7 @@ export const TabButton = ({ param, value, name }: TabButtonProps) => {
     <button
       onClick={onClick}
       className={cn(
-        "flex items-center justify-center w-min p-1 px-4 rounded-md whitespace-nowrap border border-slate-800 text-slate-800 bg-transparent select-none",
+        "flex items-center justify-center md:w-min w-full p-1 px-4 rounded-md whitespace-nowrap border border-slate-800 text-slate-800 bg-transparent select-none md:text-md text-sm",
         search === value && "text-white bg-slate-800",
       )}
     >

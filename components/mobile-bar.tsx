@@ -13,23 +13,20 @@ import { useParams, usePathname, useRouter } from "next/navigation";
 import { UserButton } from "./auth/user-button";
 import { cn } from "@/lib/utils";
 
-const Sidebar = () => {
+const MobileBar = () => {
   const router = useRouter();
   const params = useParams();
   const pathname = usePathname();
 
   return (
-    <nav className="flex flex-col w-20 h-full bg-white shadow-md shadow-neutral-500 items-center justify-between">
-      <div className="flex justify-center items-center h-20"></div>
-      <ul className="space-y-4 justify-center items-center flex flex-col">
+    <nav className="flex h-20 w-full bg-white shadow-md shadow-neutral-500 items-center justify-center">
+      <ul className="flex items-center justify-between space-x-2 w-full px-2">
         <SidebarButton href="home" name="Home">
           <Home strokeWidth={0.5} className="w-10 h-10" />
         </SidebarButton>
+
         <SidebarButton href="library" query="?status=all" name="Library">
           <Library strokeWidth={0.5} className="w-10 h-10" />
-        </SidebarButton>
-        <SidebarButton href="authors" name="Authors">
-          <PenTool strokeWidth={0.5} className="w-10 h-10" />
         </SidebarButton>
         <button
           onClick={() => {
@@ -50,12 +47,14 @@ const Sidebar = () => {
             />
           </div>
         </button>
-      </ul>
-      <div className="flex justify-center items-center h-20">
+        <SidebarButton href="authors" name="Authors">
+          <PenTool strokeWidth={0.5} className="w-10 h-10" />
+        </SidebarButton>
+
         <UserButton />
-      </div>
+      </ul>
     </nav>
   );
 };
 
-export default Sidebar;
+export default MobileBar;

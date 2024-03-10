@@ -89,7 +89,7 @@ const BookBar = ({ book }: BookBarProps) => {
               </div>
               <Button
                 onClick={() => {
-                  router.push(`/${params.userId}/authors/${book.author.id}`);
+                  router.push(`/authors/${book.author.id}`);
                 }}
                 variant="link"
                 className={cn(
@@ -100,7 +100,7 @@ const BookBar = ({ book }: BookBarProps) => {
               </Button>
             </div>
             <div className="flex space-x-5">
-              <Badge className="font-extralight px-4 text-md w-min">
+              <Badge className="font-extralight px-4 text-md w-min whitespace-nowrap">
                 {book.bookGenre}
               </Badge>
               <BookStatusButton bookStatus={book.bookStatus} />

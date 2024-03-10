@@ -71,9 +71,9 @@ const LibraryPage = () => {
   };
 
   return (
-    <div className="flex flex-col w-full h-full space-y-3 bg-amber-50/20 p-5 overflow-y-scroll">
+    <div className="flex flex-col w-full h-full space-y-3 bg-amber-50/20 md:p-5 p-2 overflow-y-scroll">
       <Navbar title="library" />
-      <div className="flex gap-2 w-full">
+      <div className="md:flex grid grid-cols-3 gap-2 w-full">
         <TabButton param="status" value="all" name="All" />
         <TabButton param="status" value="favourites" name="Favourites" />
         <TabButton param="status" value="readed" name="Readed" />
@@ -91,9 +91,9 @@ const LibraryPage = () => {
           </Link>
         </div>
       )}
-      <div className="gap-4 pt-10 ">
+      <div className="gap-4 md:pt-10 ">
         {filteredBooks ? (
-          <div className="grid grid-flow-row-dense lg:grid-cols-4 sm:grid-cols-2 grid-cols-1">
+          <div className="grid grid-flow-row-dense lg:grid-cols-4 sm:grid-cols-2 grid-cols-1 space-y-[1px]">
             {filteredBooks.map((book) => (
               <BookWidget key={book.id} book={book} />
             ))}

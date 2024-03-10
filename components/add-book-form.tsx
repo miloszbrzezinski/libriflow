@@ -49,7 +49,7 @@ export const AddBookForm = () => {
     startTransition(() => {
       addBook(user!.id!, values).then((data) => {
         if (data.success) {
-          router.push(`library`);
+          router.push(`library?status=all`);
         }
       });
     });

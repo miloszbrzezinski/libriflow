@@ -17,14 +17,14 @@ export const AuthorItem = ({ author }: AuthorItemProps) => {
   };
   return (
     <div onClick={onClick} className="flex w-full bg-white p-2 space-x-5">
-      <div className="w-32 h-32 rounded-full">
+      <div className="md:w-32 md:h-32 h-20 w-20 rounded-full">
         {author.imageUrl.length > 0 ? (
           <Image
             src={author.imageUrl}
             alt="book"
             height={100}
             width={200}
-            className="rounded-full w-32 h-32"
+            className="rounded-full md:w-32 md:h-32 w-20 h-20"
           />
         ) : (
           <div className="w-full h-full rounded-full items-center justify-center flex bg-neutral-200">
@@ -33,7 +33,9 @@ export const AuthorItem = ({ author }: AuthorItemProps) => {
         )}
       </div>
       <div className="h-full flex items-center">
-        <p className="whitespace-nowrap text-3xl">{author.name}</p>
+        <p className="md:whitespace-nowrap md:text-3xl text-xl">
+          {author.name}
+        </p>
       </div>
     </div>
   );

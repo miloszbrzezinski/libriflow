@@ -9,7 +9,7 @@ interface BookSidebar {
 
 const BookSidebar = ({ book }: BookSidebar) => {
   return (
-    <div className="flex flex-col h-full w-[60%] shadow-lg shadow-stone-400 space-y-5 p-3">
+    <div className="hidden md:flex flex-col h-full w-[60%] shadow-lg shadow-stone-400 space-y-5 p-3">
       <div>
         <BookBar book={book} />
         <Separator />

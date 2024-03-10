@@ -10,7 +10,7 @@ interface BooksListProps {
 
 export const BooksList = ({ books, noBooksMesage }: BooksListProps) => {
   return (
-    <div className="flex flex-col gap-2 w-min p-2 h-full">
+    <div className="flex flex-col gap-2 md:w-min w-full p-2 h-full">
       <p className="text-2xl font-light">Reading</p>
       <Separator className="bg-slate-800 shadow-md" />
       <div className="h-full flex-col flex gap-2 overflow-y-scroll">

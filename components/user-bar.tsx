@@ -26,8 +26,8 @@ export const UserBar = ({ books }: UserBarProps) => {
 
   return (
     <div className="flex justify-between w-full">
-      <div className="flex space-x-5 items-center">
-        <div className="w-36 h-36 border-8 border-white rounded-full">
+      <div className="flex md:space-x-5 items-center">
+        <div className="w-36 h-36 border-8 border-white rounded-full hidden md:block">
           {user.image ? (
             <Image src={user.image} alt="book" height={100} width={200} />
           ) : (
@@ -41,13 +41,17 @@ export const UserBar = ({ books }: UserBarProps) => {
             <div className="flex flex-col justify-start space-y-0">
               <p
                 className={cn(
-                  "text-5xl font-light text-slate-800 p-0 m-0",
+                  "md:text-5xl text-3xl font-light text-slate-800 p-0 m-0",
                   headingFont.className,
                 )}
               >
                 {user.name}
               </p>
-              <p className={cn("text-xl font-light text-slate-800 p-0 m-0")}>
+              <p
+                className={cn(
+                  "text-sm md:text-xl font-light text-slate-800 p-0 m-0",
+                )}
+              >
                 <span className="font-medium">{books.length}</span> books in
                 library
               </p>

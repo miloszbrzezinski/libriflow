@@ -26,12 +26,18 @@ const BookNoteItem = ({ note }: BookNoteItemProps) => {
         <BookNoteForm cancelEditing={cancelEditing} bookNote={note} />
       ) : (
         <div className="group flex space-x-3">
-          <div className="flex space-x-2">
+          <div
+            className={cn(
+              "flex space-x-2",
+              note.isQuotation ? "bg-yellow-600" : "bg-emerald-800",
+              "md:bg-transparent",
+            )}
+          >
             <div className="flex flex-col items-end justify-between space-y-10">
               <div className="flex items-center space-x-2">
                 <Edit
                   className={cn(
-                    "text-transparent",
+                    "md:block hidden text-transparent",
                     note.isQuotation
                       ? "group-hover:text-yellow-600"
                       : "group-hover:text-emerald-800",
@@ -44,12 +50,12 @@ const BookNoteItem = ({ note }: BookNoteItemProps) => {
                   {note.isQuotation ? (
                     <Quote
                       strokeWidth={2}
-                      className="text-yellow-600 w-7 h-7"
+                      className="md:text-yellow-600 w-7 h-7"
                     />
                   ) : (
                     <NotebookPen
                       strokeWidth={2}
-                      className="text-emerald-800 w-7 h-7"
+                      className="md:text-emerald-800  w-7 h-7"
                     />
                   )}
                 </div>
@@ -58,7 +64,9 @@ const BookNoteItem = ({ note }: BookNoteItemProps) => {
               <div
                 className={cn(
                   "flex flex-col items-end",
-                  note.isQuotation ? "text-yellow-800" : "text-emerald-800",
+                  note.isQuotation
+                    ? "md:text-yellow-800"
+                    : "md:text-emerald-800",
                 )}
               >
                 <Label>Page</Label>
@@ -67,7 +75,7 @@ const BookNoteItem = ({ note }: BookNoteItemProps) => {
             </div>
             <div
               className={cn(
-                "flex w-2 h-full",
+                "w-2 h-full hidden md:flex",
                 note.isQuotation ? "bg-yellow-600" : "bg-emerald-800",
               )}
             />

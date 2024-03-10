@@ -31,10 +31,10 @@ const HomePage = () => {
   }
 
   return (
-    <div className="flex flex-col w-full h-full bg-amber-50/20 p-5 overflow-y-scroll">
+    <div className="flex flex-col w-full h-full bg-amber-50/20 md:p-5 md:pb-5 p-2 pb-28 overflow-y-scroll">
       {books ? <UserBar books={books} /> : <UserBar.Skeleton />}
-      <div className="flex gap-10 w-full pt-10 h-full justify-center">
-        <div className="flex flex-col w-2/3 h-full gap-20 p-2">
+      <div className="md:flex gap-10 w-full pt-10 h-full justify-center">
+        <div className="flex flex-col md:w-2/3 w-full h-full gap-20 p-2">
           <FriendsList />
           <QuotesList />
         </div>

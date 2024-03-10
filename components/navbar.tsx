@@ -14,7 +14,7 @@ const Navbar = ({ title }: NavbarProps) => {
     <nav className="flex w-full h-16 items-center justify-between">
       <p
         className={cn(
-          "text-5xl font-light text-slate-800",
+          "md:text-5xl text-3xl font-light text-slate-800",
           headingFont.className,
         )}
       >

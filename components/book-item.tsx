@@ -17,8 +17,8 @@ const BookItem = ({ book }: AuthorItemProps) => {
     router.push(`/library/book/${book.id}`);
   };
   return (
-    <div onClick={onClick} className="flex w-full bg-white p-2 space-x-5">
-      <div className="h-40">
+    <div onClick={onClick} className="flex w-full bg-white p-2 md:space-x-5">
+      <div className="h-40 hidden md:block">
         {book.imageUrl.length > 0 ? (
           <Image src={book.imageUrl} alt="book" height={70} width={105} />
         ) : (

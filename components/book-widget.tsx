@@ -25,9 +25,9 @@ export const BookWidget = ({ book }: BookWidgetProps) => {
   return (
     <div
       onClick={onClick}
-      className="group flex p-2 bg-white rounded-lg shadow-md w-min"
+      className="group flex p-2 bg-white md:rounded-lg shadow-md md:w-min w-full"
     >
-      <div className="min-w-48 items-center flex">
+      <div className="hidden min-w-48 items-center md:flex">
         {book.imageUrl.length > 0 ? (
           <Image src={book.imageUrl} alt="book" height={100} width={200} />
         ) : (
@@ -36,7 +36,7 @@ export const BookWidget = ({ book }: BookWidgetProps) => {
           </div>
         )}
       </div>
-      <div className="p-2 justify-between flex flex-col">
+      <div className="p-2 justify-between flex flex-col w-full">
         <div>
           <p className="text-2xl">{book.bookName}</p>
           <p className="whitespace-nowrap text-xl font-light p-0 h-min m-0">
@@ -49,7 +49,17 @@ export const BookWidget = ({ book }: BookWidgetProps) => {
             <Badge className="font-light">{book.bookGenre}</Badge>
           </div>
         </div>
-        <div className="flex gap-2">
+        <div className="flex justify-end gap-2 w-full">
+          <div className="flex w-10">
+            <Badge
+              className={cn(
+                "bg-gradient-to-tr from-rose-900 to-rose-700 text-white space-x-2 hidden",
+                book.isFavourite && "block",
+              )}
+            >
+              <Heart strokeWidth={1.5} className="w-6 h-6" />
+            </Badge>
+          </div>
           <div
             className={cn(
               "flex space-x-2 p-1 px-3 font-extralight outline-none h-min rounded-full select-none",
@@ -60,39 +70,29 @@ export const BookWidget = ({ book }: BookWidgetProps) => {
             )}
           >
             {book.bookStatus === BookStatus.READED && (
-              <div className="flex space-x-2 text-white whitespace-nowrap">
+              <div className="flex md:space-x-2 text-white whitespace-nowrap">
                 <Check strokeWidth={1} />
-                <span>Readed</span>
+                <span className="hidden md:block">Read</span>
               </div>
             )}
             {book.bookStatus === BookStatus.READING && (
-              <div className="flex space-x-2 text-white whitespace-nowrap">
+              <div className="flex md:space-x-2 text-white whitespace-nowrap">
                 <Loader strokeWidth={1} />
-                <span>Reading</span>
+                <span className="hidden md:block">Reading</span>
               </div>
             )}
             {book.bookStatus === BookStatus.NOT_REDED && (
-              <div className="flex space-x-2 text-white whitespace-nowrap">
+              <div className="flex md:space-x-2 text-white whitespace-nowrap">
                 <X strokeWidth={1} />
-                <span>Unread</span>
+                <span className="hidden md:block">Unread</span>
               </div>
             )}
             {book.bookStatus === BookStatus.WISH_LIST && (
-              <div className="flex space-x-2 text-white whitespace-nowrap">
+              <div className="flex md:space-x-2 text-white whitespace-nowrap">
                 <Gift strokeWidth={1} />
-                <span>Wish list</span>
+                <span className="hidden md:block">Wish list</span>
               </div>
             )}
-          </div>
-          <div className="flex w-10">
-            <Badge
-              className={cn(
-                "bg-gradient-to-tr from-rose-900 to-rose-700 text-white space-x-2 hidden",
-                book.isFavourite && "block",
-              )}
-            >
-              <Heart strokeWidth={1.5} className="w-6 h-6" />
-            </Badge>
           </div>
         </div>
       </div>

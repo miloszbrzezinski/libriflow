@@ -34,10 +34,10 @@ const AuthorPage = async ({
   }
 
   return (
-    <div className="flex flex-col w-full h-full bg-amber-50/20 p-5">
+    <div className="flex flex-col w-full h-full bg-amber-50/20 md:p-5 p-2">
       <AuthorBar author={author} />
       <Separator className="my-4 bg-green-950" />
-      <div className="flex flex-col gap-[1px] w-full pt-10">
+      <div className="flex flex-col gap-[1px] w-full md:pt-10">
         {author.books.map((book) => (
           <BookItem key={book.id} book={book} />
         ))}

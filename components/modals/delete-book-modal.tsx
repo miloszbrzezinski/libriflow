@@ -34,7 +34,7 @@ export const DeleteBookModal = () => {
       deleteBook(book.id).then((data) => {
         if (data.success) {
           onClose();
-          router.push(`/${params.userId}/library`);
+          router.push(`/library?status=all`);
           router.refresh();
         }
       });

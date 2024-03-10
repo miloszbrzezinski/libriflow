@@ -36,7 +36,7 @@ const BookStatusButton = ({ bookStatus }: BookStatusButtonProps) => {
     <DropdownMenu>
       <DropdownMenuTrigger
         className={cn(
-          "flex space-x-2 p-1 px-4 outline-none h-min rounded-full select-none text-md w-min whitespace-nowrap",
+          "flex space-x-2 p-1 md:px-4 px-2 outline-none h-min rounded-full select-none md:text-md text-sm w-min whitespace-nowrap",
           bookStatus === BookStatus.READED && "bg-green-700",
           bookStatus === BookStatus.READING && "bg-sky-700",
           bookStatus === BookStatus.NOT_REDED && "bg-neutral-700",
@@ -46,7 +46,7 @@ const BookStatusButton = ({ bookStatus }: BookStatusButtonProps) => {
         {bookStatus === BookStatus.READED && (
           <div className="flex space-x-2 text-white items-center">
             <Check strokeWidth={1} className="w-5 h-5" />
-            <span>Readed</span>
+            <span>Read</span>
           </div>
         )}
         {bookStatus === BookStatus.READING && (
@@ -76,7 +76,7 @@ const BookStatusButton = ({ bookStatus }: BookStatusButtonProps) => {
           }}
         >
           <div className="rounded-full flex w-4 h-4 bg-green-700" />
-          <span>Readed</span>
+          <span>Read</span>
         </DropdownMenuItem>
         <DropdownMenuItem
           className="space-x-2"

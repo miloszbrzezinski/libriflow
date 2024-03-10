@@ -27,8 +27,8 @@ const AuthorBar = ({ author }: AuthorBarProps) => {
 
   return (
     <div className="flex justify-between w-full">
-      <div className="flex space-x-5 items-center">
-        <div className="w-36 h-36 border-8 border-white rounded-full">
+      <div className="flex md:space-x-5 items-center">
+        <div className="w-36 h-36 border-8 border-white rounded-full hidden md:block">
           {author.imageUrl.length > 0 ? (
             <Image
               src={author.imageUrl}
@@ -48,7 +48,7 @@ const AuthorBar = ({ author }: AuthorBarProps) => {
             <div className="flex flex-col justify-start space-y-0">
               <div
                 className={cn(
-                  "group space-x-4 flex justify-center items-center text-5xl font-light text-slate-800 p-0 m-0",
+                  "group space-x-4 flex justify-start items-center md:text-5xl text-3xl font-light text-slate-800 p-0 m-0",
                   headingFont.className,
                 )}
               >
@@ -60,7 +60,11 @@ const AuthorBar = ({ author }: AuthorBarProps) => {
                   />
                 </div>
               </div>
-              <p className={cn("text-xl font-light text-slate-800 p-0 m-0")}>
+              <p
+                className={cn(
+                  "text-sm md:text-xl font-light text-slate-800 p-0 m-0",
+                )}
+              >
                 <span className="font-medium">{author.books.length}</span> book
                 {author.books.length > 1 && <span>s</span>} in library
               </p>

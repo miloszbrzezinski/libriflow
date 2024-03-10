@@ -23,9 +23,9 @@ const AuthorsPage = () => {
   }, []);
 
   return (
-    <div className="flex flex-col w-full h-full bg-amber-50/20 p-5">
+    <div className="flex flex-col w-full h-full bg-amber-50/20 md:p-5 p-2">
       <Navbar title="authors" />
-      <div className="flex flex-col gap-[1px] w-full h-full pt-10">
+      <div className="flex flex-col gap-[1px] w-full h-full md:pt-10">
         {authors && authors.length === 0 && (
           <div className="flex flex-col w-full h-full items-center justify-center space-y-5">
             <p className="text-4xl text-slate-700">
@@ -37,7 +37,7 @@ const AuthorsPage = () => {
           </div>
         )}
         {authors ? (
-          <div>
+          <div className="flex flex-col space-y-[1px]">
             {authors.map((author) => (
               <AuthorItem key={author.id} author={author} />
             ))}

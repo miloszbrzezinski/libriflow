@@ -5,7 +5,7 @@ import { Separator } from "./ui/separator";
 import { Input } from "./ui/input";
 import { Textarea } from "./ui/textarea";
 import { Label } from "./ui/label";
-import { NotebookPen, Quote } from "lucide-react";
+import { NotebookPen, Plus, Quote } from "lucide-react";
 import BookNoteItem from "./book-note-item";
 import { BookNote } from "@prisma/client";
 import { addBookNote } from "@/actions/add-book-note";
@@ -32,15 +32,16 @@ const BookNotesList = ({ notes }: BookNotesListProps) => {
 
   return (
     <div className="flex flex-col w-full h-full">
-      <div className="flex items-center justify-between">
-        <p className="text-2xl font-light whitespace-nowrap">
+      <div className="flex items-center justify-between md:px-0 px-2 ">
+        <p className="md:text-2xl text-xl font-light whitespace-nowrap">
           Notes and quotes
         </p>
-        <Button onClick={newNote} className="">
-          Add note
+        <Button onClick={newNote}>
+          <p className="hidden md:block">Add note</p>
+          <Plus strokeWidth={1} className="md:hidden block" />
         </Button>
       </div>
-      <Separator className="my-4 bg-green-950" />
+      <Separator className="md:my-4 my-2 bg-green-950" />
       <div
         className={cn(
           "flex flex-col space-y-4",

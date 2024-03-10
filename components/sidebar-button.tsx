@@ -6,16 +6,17 @@ import { useParams, usePathname, useRouter } from "next/navigation";
 interface SidebarButtonProps {
   href: string;
   name: string;
+  query?: string;
   children: React.ReactNode;
 }
 
-const SidebarButton = ({ href, name, children }: SidebarButtonProps) => {
+const SidebarButton = ({ href, name, children, query }: SidebarButtonProps) => {
   const params = useParams();
   const router = useRouter();
   const pathname = usePathname();
 
   const onClick = () => {
-    router.push(`/${href}`);
+    query ? router.push(`/${href}${query}`) : router.push(`/${href}`);
   };
   return (
     <li
