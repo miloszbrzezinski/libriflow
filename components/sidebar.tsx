@@ -40,7 +40,7 @@ const Sidebar = () => {
           <div
             className={cn(
               "p-2 flex items-center justify-center rounded-[50px] group-hover:shadow-md group-hover:rounded-lg overflow-hidden transition-all group-hover:bg-slate-600 bg-slate-300 text-slate-800",
-              pathname.split("/")[2] === "add-book" &&
+              pathname.split("/")[1] === "add-book" &&
                 "bg-slate-600 hover:bg-slate-500 shadow-lg rounded-lg text-white",
             )}
           >

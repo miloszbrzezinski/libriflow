@@ -56,7 +56,7 @@ export const AddBookForm = () => {
   };
 
   return (
-    <div>
+    <div className="hidden md:block">
       <Form {...form}>
         <form
           onSubmit={form.handleSubmit(onSubmit)}
