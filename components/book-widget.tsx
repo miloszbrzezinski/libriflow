@@ -102,8 +102,8 @@ export const BookWidget = ({ book }: BookWidgetProps) => {
 
 BookWidget.Skeleton = function SkeletonBookWidget() {
   return (
-    <div className="group flex p-2 bg-stone-500 rounded-lg shadow-md w-min">
-      <Skeleton className="min-w-48 min-h-72 items-center flex" />
+    <div className="group flex p-2 bg-white md:rounded-lg shadow-md md:w-min w-full h-96">
+      <Skeleton className="min-w-48 min-h-72 items-center hidden md:flex" />
       <div className="p-2 justify-between flex flex-col">
         <div className="space-y-2">
           <Skeleton className="h-8 w-40" />

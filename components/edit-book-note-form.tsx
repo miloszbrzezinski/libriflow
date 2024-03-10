@@ -72,9 +72,12 @@ const BookNoteForm = ({ bookNote, cancelEditing }: BookNoteFormProps) => {
 
   return (
     <Form {...form}>
-      <form onSubmit={form.handleSubmit(onSubmit)} className="w-full">
-        <div className="group flex space-x-3 w-full ">
-          <div className="flex space-x-2 ">
+      <form
+        onSubmit={form.handleSubmit(onSubmit)}
+        className="w-full md:m-0 m-2"
+      >
+        <div className="group flex md:space-x-3 w-full ">
+          <div className="hidden md:flex md:space-x-2 ">
             <div className="flex flex-col items-end justify-between space-y-10 ">
               <div className="flex items-center space-x-2 ">
                 <Button

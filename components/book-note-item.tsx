@@ -27,13 +27,16 @@ const BookNoteItem = ({ note }: BookNoteItemProps) => {
       ) : (
         <div className="group flex space-x-3">
           <div
+            onClick={() => {
+              setEditing(!editing);
+            }}
             className={cn(
               "flex space-x-2",
               note.isQuotation ? "bg-yellow-600" : "bg-emerald-800",
               "md:bg-transparent",
             )}
           >
-            <div className="flex flex-col items-end justify-between space-y-10">
+            <div className="flex flex-col items-end justify-between space-y-10 md:p-0 p-1">
               <div className="flex items-center space-x-2">
                 <Edit
                   className={cn(
@@ -50,12 +53,12 @@ const BookNoteItem = ({ note }: BookNoteItemProps) => {
                   {note.isQuotation ? (
                     <Quote
                       strokeWidth={2}
-                      className="md:text-yellow-600 w-7 h-7"
+                      className="text-yellow-100 md:text-yellow-600 w-7 h-7"
                     />
                   ) : (
                     <NotebookPen
                       strokeWidth={2}
-                      className="md:text-emerald-800  w-7 h-7"
+                      className="text-emerald-100 md:text-emerald-800  w-7 h-7"
                     />
                   )}
                 </div>
@@ -65,12 +68,12 @@ const BookNoteItem = ({ note }: BookNoteItemProps) => {
                 className={cn(
                   "flex flex-col items-end",
                   note.isQuotation
-                    ? "md:text-yellow-800"
-                    : "md:text-emerald-800",
+                    ? "text-yellow-100 md:text-yellow-800"
+                    : "text-emerald-100 md:text-emerald-800",
                 )}
               >
-                <Label>Page</Label>
-                <Label className="text-2xl">{note.page}</Label>
+                <Label className="text-sm md:text-2xl">Page</Label>
+                <Label className="text-sm md:text-2xl">{note.page}</Label>
               </div>
             </div>
             <div
@@ -80,7 +83,7 @@ const BookNoteItem = ({ note }: BookNoteItemProps) => {
               )}
             />
           </div>
-          <div>
+          <div className="text-sm">
             {note.note.split("\n").map((par, index) => (
               <p key={index}>{par}</p>
             ))}

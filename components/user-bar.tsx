@@ -70,12 +70,12 @@ export const UserBar = ({ books }: UserBarProps) => {
 UserBar.Skeleton = function SkeletonUserBar() {
   return (
     <div className="flex justify-between w-full">
-      <div className="flex space-x-5 items-center">
-        <Skeleton className="w-36 h-36 border-8 border-white bg-stone-400 rounded-full" />
+      <div className="md:space-x-5 items-center flex">
+        <Skeleton className="w-36 h-36 border-8 border-white bg-stone-400 rounded-full hidden md:block" />
         <div className="flex flex-col justify-between">
-          <div className="flex flex-col space-y-4">
-            <div className="flex flex-col justify-start space-y-3">
-              <Skeleton className="w-96 h-12 bg-stone-400" />
+          <div className="flex flex-col md:space-y-4 space-y-1">
+            <div className="flex flex-col justify-start md:space-y-3 space-y-1">
+              <Skeleton className="md:w-96 w-72 md:h-12 h-8 bg-stone-400" />
               <Skeleton className="w-40 h-5 bg-stone-400" />
             </div>
           </div>
