@@ -95,7 +95,7 @@ const LibraryPage = () => {
         {filteredBooks ? (
           <div className="grid grid-flow-row-dense lg:grid-cols-4 sm:grid-cols-2 grid-cols-1 space-y-[1px]">
             {filteredBooks.map((book) => (
-              <BookWidget key={book.id} book={book} />
+              <BookWidget key={book.id} book={book} lock={false} />
             ))}
           </div>
         ) : (

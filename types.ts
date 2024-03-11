@@ -11,3 +11,7 @@ export type UserWithBooks = User & {
 export type AuthorWithBooks = Author & {
   books: Book[];
 };
+
+export type UserWithData = User & {
+  books: BookWithAuthors[];
+};

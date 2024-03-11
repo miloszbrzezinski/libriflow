@@ -5,24 +5,45 @@ import localFont from "next/font/local";
 import Image from "next/image";
 import { UserIcon } from "lucide-react";
 import { useParams, useRouter } from "next/navigation";
-import { BookWithAuthors, UserWithBooks } from "@/types";
+import { BookWithAuthors, UserWithBooks, UserWithData } from "@/types";
 import { useCurrentUser } from "@/hooks/use-current-user";
 import { Skeleton } from "./ui/skeleton";
+import { Button } from "./ui/button";
+import { follow, isFollowing } from "@/actions/follow";
+import { useEffect, useState } from "react";
 
 const headingFont = localFont({
   src: "./../public/fonts/Lora-Regular.ttf",
 });
 
 interface UserBarProps {
-  books: BookWithAuthors[];
+  user: UserWithData;
 }
 
-export const UserBar = ({ books }: UserBarProps) => {
-  const user = useCurrentUser();
+export const UserBar = ({ user }: UserBarProps) => {
+  const currentUser = useCurrentUser();
+  const router = useRouter();
+  const [following, setFollowing] = useState(false);
+
+  useEffect(() => {
+    isFollowing(currentUser!.id!, user.id).then((data) => {
+      if (data) {
+        setFollowing(data.following);
+      }
+    });
+  }, []);
 
   if (!user) {
     return;
   }
+
+  const onClick = (currentUserId: string, userId: string) => {
+    follow(currentUserId, userId).then((data) => {
+      if (data) {
+        setFollowing(data.follow);
+      }
+    });
+  };
 
   return (
     <div className="flex justify-between w-full">
@@ -52,8 +73,8 @@ export const UserBar = ({ books }: UserBarProps) => {
                   "text-sm md:text-xl font-light text-slate-800 p-0 m-0",
                 )}
               >
-                <span className="font-medium">{books.length}</span> books in
-                library
+                <span className="font-medium">{user.books.length}</span> books
+                in library
               </p>
             </div>
           </div>
@@ -61,7 +82,24 @@ export const UserBar = ({ books }: UserBarProps) => {
       </div>
       <div>
         <div className="flex space-x-4"></div>
-        <div></div>
+        <div>
+          {currentUser?.id !== user.id && (
+            <Button
+              onClick={() => {
+                onClick(currentUser!.id!, user.id);
+              }}
+              variant="outline"
+              className={cn(
+                "bg-transparent w-full border-slate-500 space-x-3 hover:bg-sky-300 hover:text-sky-900",
+                following &&
+                  "bg-gradient-to-tr from-sky-900 to-sky-700 border-sky-500 text-white space-x-2 hover:from-sky-800 hover:to-sky-600 hover:text-white",
+              )}
+            >
+              {following && <span>Following</span>}
+              {!following && <span>Follow</span>}
+            </Button>
+          )}
+        </div>
       </div>
     </div>
   );

@@ -15,6 +15,7 @@ export const getUserWithData = async (userId: string) => {
           author: true,
         },
       },
+      following: true,
     },
   });
 

@@ -11,15 +11,18 @@ import { Skeleton } from "./ui/skeleton";
 
 interface BookWidgetProps {
   book: BookWithAuthors;
+  lock: boolean;
 }
 
-export const BookWidget = ({ book }: BookWidgetProps) => {
+export const BookWidget = ({ book, lock }: BookWidgetProps) => {
   const params = useParams();
   const router = useRouter();
   const pathname = usePathname();
 
   const onClick = () => {
-    router.push(`library/book/${book.id}`);
+    if (!lock) {
+      router.push(`library/book/${book.id}`);
+    }
   };
 
   return (
