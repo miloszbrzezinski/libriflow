@@ -89,7 +89,7 @@ export const EditAuthorModal = () => {
             className="space-y-6 w-full h-full flex flex-col"
           >
             <div className="flex flex-col w-full h-full space-y-5">
-              <div className="flex h-full space-x-10">
+              <div className="md:flex h-full w-full md:space-x-10">
                 <div className="flex bg-white rounded-md items-center justify-center">
                   <FormField
                     control={form.control}
@@ -107,7 +107,7 @@ export const EditAuthorModal = () => {
                     )}
                   />
                 </div>
-                <div className="space-y-4 w-96 flex flex-col">
+                <div className="md:space-y-4 md:w-96 w-full flex flex-col">
                   <FormField
                     control={form.control}
                     name="authorName"

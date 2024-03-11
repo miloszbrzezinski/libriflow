@@ -1,23 +1,16 @@
 "use client";
 import { cn } from "@/lib/utils";
-import { Book } from "@prisma/client";
 import localFont from "next/font/local";
 import Image from "next/image";
 import { Button } from "./ui/button";
 import { Badge } from "./ui/badge";
 import { Check, Edit, Heart, Star, Trash } from "lucide-react";
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "./ui/select";
 import BookStatusButton from "./book-status-button";
 import { useParams, useRouter } from "next/navigation";
 import { bookFavourite } from "@/actions/book-favourite";
 import { BookWithAuthors } from "@/types";
 import { useModal } from "@/hooks/use-modal-store";
+import { Author } from "@prisma/client";
 
 const headingFont = localFont({
   src: "./../public/fonts/Lora-Regular.ttf",
@@ -25,9 +18,10 @@ const headingFont = localFont({
 
 interface BookBarProps {
   book: BookWithAuthors;
+  authors: Author[];
 }
 
-const BookBar = ({ book }: BookBarProps) => {
+const BookBar = ({ book, authors }: BookBarProps) => {
   const params = useParams();
   const router = useRouter();
   const { onOpen } = useModal();
@@ -78,12 +72,12 @@ const BookBar = ({ book }: BookBarProps) => {
                 <p>{book.bookName}</p>
                 <div className="ml-auto flex items-center gap-x-2">
                   <Edit
-                    onClick={() => onOpen("editBook", { book })}
-                    className="hidden group-hover:block w-6 h-6 text-slate-700 hover:text-slate-700 dark:text-zinc-400 dark:hover:text-zinc-300 transition"
+                    onClick={() => onOpen("editBook", { book, authors })}
+                    className="md:hidden md:group-hover:block w-6 h-6 text-slate-700 hover:text-slate-700 dark:text-zinc-400 dark:hover:text-zinc-300 transition"
                   />
                   <Trash
                     onClick={() => onOpen("deleteBook", { book })}
-                    className="hidden group-hover:block w-6 h-6 text-slate-700 hover:text-rose-700 dark:text-zinc-400 dark:hover:text-zinc-300 transition"
+                    className="md:hidden md:group-hover:block w-6 h-6 text-slate-700 hover:text-rose-700 dark:text-zinc-400 dark:hover:text-zinc-300 transition"
                   />
                 </div>
               </div>

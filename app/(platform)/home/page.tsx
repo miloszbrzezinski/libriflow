@@ -38,9 +38,8 @@ const HomePage = () => {
     <div className="flex flex-col w-full h-full bg-amber-50/20 md:p-5 md:pb-5 p-2 pb-28 overflow-y-scroll">
       {books ? <UserBar user={userWithData!} /> : <UserBar.Skeleton />}
       <div className="md:flex gap-10 w-full pt-10 h-full justify-center">
-        <div className="flex flex-col md:w-2/3 w-full h-full gap-20 p-2">
+        <div className="flex flex-col md:w-2/3 w-full h-full md:gap-20 gap-5 p-2">
           <FriendsList usersList={following!} />
-          <QuotesList />
         </div>
         {currentBooks ? (
           <BooksList

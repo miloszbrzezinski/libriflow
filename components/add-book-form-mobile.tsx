@@ -22,8 +22,13 @@ import { useCurrentUser } from "@/hooks/use-current-user";
 import { addBook } from "@/actions/add-book";
 import { AuthorSelector } from "./author-selector";
 import { useParams, useRouter } from "next/navigation";
+import { Author } from "@prisma/client";
 
-export const AddBookFormMobile = () => {
+interface AddBookFormMobileProps {
+  authors: Author[];
+}
+
+export const AddBookFormMobile = ({ authors }: AddBookFormMobileProps) => {
   const [error, setError] = useState<string | undefined>("");
   const [success, setSuccess] = useState<string | undefined>("");
   const [isPending, startTransition] = useTransition();
@@ -42,6 +47,10 @@ export const AddBookFormMobile = () => {
     },
   });
   const router = useRouter();
+
+  const setAuthorName = (author: string) => {
+    form.setValue("bookAuthor", author);
+  };
 
   const onSubmit = (values: z.infer<typeof AddBookSchema>) => {
     setError("");
@@ -99,10 +108,9 @@ export const AddBookFormMobile = () => {
                 <FormItem>
                   <FormLabel>Author</FormLabel>
                   <FormControl>
-                    <Input
-                      {...field}
-                      disabled={isPending}
-                      placeholder="e.g. Christophet Hitchens"
+                    <AuthorSelector
+                      setAuthorName={setAuthorName}
+                      authors={authors}
                     />
                   </FormControl>
                   <FormMessage />

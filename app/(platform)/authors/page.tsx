@@ -37,7 +37,7 @@ const AuthorsPage = () => {
           </div>
         )}
         {authors ? (
-          <div className="flex flex-col space-y-[1px]">
+          <div className="flex flex-col space-y-[1px] mb-20">
             {authors.map((author) => (
               <AuthorItem key={author.id} author={author} />
             ))}

@@ -15,13 +15,34 @@ export const deleteBook = async (bookId: string) => {
     return { error: "Something went wrong!" };
   }
 
-  console.log(bookId);
+  const book = await db.book.findUnique({
+    where: {
+      id: bookId,
+    },
+  });
 
   await db.book.delete({
     where: {
       id: bookId,
     },
   });
+
+  const author = await db.author.findUnique({
+    where: {
+      id: book?.authorId,
+    },
+    include: {
+      books: true,
+    },
+  });
+
+  if (author?.books.length === 0) {
+    await db.author.delete({
+      where: {
+        id: author.id,
+      },
+    });
+  }
 
   return { success: "Book deleted!" };
 };

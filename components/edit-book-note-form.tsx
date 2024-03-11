@@ -79,7 +79,7 @@ const BookNoteForm = ({ bookNote, cancelEditing }: BookNoteFormProps) => {
         <div className="group flex md:space-x-3 w-full ">
           <div className="hidden md:flex md:space-x-2 ">
             <div className="flex flex-col items-end justify-between space-y-10 ">
-              <div className="flex items-center space-x-2 ">
+              <div className="flex items-center md:space-x-2 ">
                 <Button
                   onClick={() => {
                     setIsQuote(!isQuote);
@@ -133,8 +133,8 @@ const BookNoteForm = ({ bookNote, cancelEditing }: BookNoteFormProps) => {
             />
           </div>
           <div className="flex flex-col w-full space-y-1">
-            <div className="flex w-full space-x-2">
-              <div className="flex w-full p-1 rounded-sm bg-white border">
+            <div className="flex w-full md:space-x-2 gap-x-1">
+              <div className="hidden md:flex w-full p-1 rounded-sm bg-white border">
                 {/* <ToggleGroup type="multiple" variant="outline">
                   <ToggleGroupItem value="bold" className="">
                     <Bold className="w-5 h-5" />
@@ -147,6 +147,23 @@ const BookNoteForm = ({ bookNote, cancelEditing }: BookNoteFormProps) => {
                   </ToggleGroupItem>
                 </ToggleGroup> */}
               </div>
+              <Button
+                onClick={() => {
+                  setIsQuote(!isQuote);
+                }}
+                type="button"
+                variant={"outline"}
+                className="md:hidden flex items-center grow"
+              >
+                {isQuote ? (
+                  <Quote strokeWidth={2} className="text-yellow-600 w-7 h-7" />
+                ) : (
+                  <NotebookPen
+                    strokeWidth={2}
+                    className="text-emerald-800 w-7 h-7"
+                  />
+                )}
+              </Button>
               <Button
                 onClick={() => {
                   onOpen("deleteBookNote", { bookNote });
@@ -185,6 +202,26 @@ const BookNoteForm = ({ bookNote, cancelEditing }: BookNoteFormProps) => {
                 </FormItem>
               )}
             />
+            <div className="md:hidden flex items-center justify-between space-x-10 px-2 w-full">
+              <Label>Page</Label>
+              <FormField
+                control={form.control}
+                name="pageNo"
+                render={({ field }) => (
+                  <FormItem className="w-full">
+                    <FormControl>
+                      <Input
+                        {...field}
+                        disabled={isPending}
+                        type="number"
+                        placeholder="..."
+                        className="text-lg"
+                      />
+                    </FormControl>
+                  </FormItem>
+                )}
+              />
+            </div>
           </div>
         </div>
       </form>

@@ -1,18 +1,10 @@
 "use client";
 import { cn } from "@/lib/utils";
-import { Book } from "@prisma/client";
+import { Author, Book } from "@prisma/client";
 import localFont from "next/font/local";
-import Image from "next/image";
 import { Button } from "./ui/button";
 import { Badge } from "./ui/badge";
 import { Check, Edit, Heart, Star, Trash } from "lucide-react";
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "./ui/select";
 import BookStatusButton from "./book-status-button";
 import { useParams, useRouter } from "next/navigation";
 import { bookFavourite } from "@/actions/book-favourite";
@@ -25,9 +17,10 @@ const headingFont = localFont({
 
 interface BookBarProps {
   book: BookWithAuthors;
+  authors: Author[];
 }
 
-const BookBarMobile = ({ book }: BookBarProps) => {
+const BookBarMobile = ({ book, authors }: BookBarProps) => {
   const params = useParams();
   const router = useRouter();
   const { onOpen } = useModal();
@@ -57,7 +50,7 @@ const BookBarMobile = ({ book }: BookBarProps) => {
                   <p>{book.bookName}</p>
                   <div className="ml-auto flex items-center gap-x-2">
                     <Edit
-                      onClick={() => onOpen("editBook", { book })}
+                      onClick={() => onOpen("editBook", { book, authors })}
                       className="hidden group-hover:block w-6 h-6 text-slate-700 hover:text-slate-700 dark:text-zinc-400 dark:hover:text-zinc-300 transition"
                     />
                     <Trash

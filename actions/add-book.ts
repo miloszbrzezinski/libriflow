@@ -31,27 +31,66 @@ export const addBook = async (
     bookDescription,
   } = validatedFields.data;
 
-  console.log(userId);
+  const author = await db.author.findMany({
+    where: {
+      userId: userId,
+      name: bookAuthor,
+    },
+  });
+
+  if (author.length === 0) {
+    await db.user.update({
+      where: {
+        id: userId,
+      },
+      data: {
+        books: {
+          create: {
+            imageUrl,
+            bookName,
+            bookGenre,
+            bookPublisher,
+            bookISBN,
+            bookDescription,
+            bookYear: String(bookYear),
+            author: {
+              create: {
+                userId,
+                name: bookAuthor,
+                imageUrl: "",
+              },
+            },
+          },
+        },
+      },
+    });
+    return { success: "Book added!" };
+  }
 
   await db.user.update({
     where: {
       id: userId,
     },
     data: {
-      books: {
-        create: {
-          imageUrl,
-          bookName,
-          bookGenre,
-          bookPublisher,
-          bookISBN,
-          bookDescription,
-          bookYear: String(bookYear),
-          author: {
-            create: {
-              userId,
-              name: bookAuthor,
-              imageUrl: "",
+      authors: {
+        update: {
+          where: {
+            id: author[0]!.id,
+          },
+          data: {
+            books: {
+              create: [
+                {
+                  imageUrl,
+                  bookName,
+                  bookGenre,
+                  bookPublisher,
+                  bookISBN,
+                  bookDescription,
+                  bookYear: String(bookYear),
+                  userId,
+                },
+              ],
             },
           },
         },

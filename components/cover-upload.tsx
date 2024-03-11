@@ -6,6 +6,7 @@ import Image from "next/image";
 import { UploadDropzone } from "@/lib/uploadthing";
 
 import "@uploadthing/react/styles.css";
+import { Button } from "./ui/button";
 
 interface FileUploadProps {
   onChange: (url?: string) => void;
@@ -18,15 +19,23 @@ export const FileUpload = ({ onChange, value, endpoint }: FileUploadProps) => {
 
   if (value && fileType !== "pdf") {
     return (
-      <div className="relative h-96 w-64">
-        <Image fill src={value} alt="Upload" className="" />
-        <button
+      <div className="flex flex-col gap-2 h-96 w-64">
+        <Image
+          src={value}
+          alt="Upload"
+          className="h-96 w-64"
+          width={200}
+          height={400}
+        />
+        <Button
+          variant="destructive"
           onClick={() => onChange("")}
-          className="bg-rose-500 text-white p-1 rounded-full absolute top-0 right-0 shadow-sm"
+          className="text-white p-1 shadow-sm space-x-2"
           type="button"
         >
           <X className="h-4 w-4" />
-        </button>
+          <p>Remove cover</p>
+        </Button>
       </div>
     );
   }

@@ -13,6 +13,7 @@ interface ModalData {
   book?: BookWithAuthors;
   bookNote?: BookNote;
   author?: Author;
+  authors?: Author[];
   apiUrl?: string;
   query?: Record<string, any>;
 }

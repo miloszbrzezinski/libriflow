@@ -27,7 +27,7 @@ const FriendsList = ({ usersList }: FriendsListProps) => {
       </div>
       <Separator className="bg-slate-800 shadow-md" />
       {usersList.length === 0 && <p>No following users</p>}
-      <div className="flex items-center gap-4 w-full pb-5  overflow-x-scroll">
+      <div className="flex items-center gap-4 w-full md:pb-5  overflow-x-scroll">
         {usersList.map((user) => (
           <button
             key={user.id}
@@ -36,7 +36,7 @@ const FriendsList = ({ usersList }: FriendsListProps) => {
             }}
             className="flex flex-col items-center justify-center space-y-2"
           >
-            <div className="w-36 h-36 border-8 border-white rounded-full hidden md:block">
+            <div className="w-32 h-32 border-8 border-white rounded-full block">
               {user.image ? (
                 <Image src={user.image} alt="book" height={100} width={200} />
               ) : (

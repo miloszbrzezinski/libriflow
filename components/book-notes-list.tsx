@@ -34,7 +34,7 @@ const BookNotesList = ({ notes }: BookNotesListProps) => {
     <div className="flex flex-col w-full h-full">
       <div className="flex items-center justify-between md:px-0 px-2 ">
         <p className="md:text-2xl text-xl font-light whitespace-nowrap">
-          Notes and quotes
+          Notes
         </p>
         <Button onClick={newNote}>
           <p className="hidden md:block">Add note</p>
@@ -44,7 +44,7 @@ const BookNotesList = ({ notes }: BookNotesListProps) => {
       <Separator className="md:my-4 my-2 bg-green-950" />
       <div
         className={cn(
-          "flex flex-col space-y-4",
+          "flex flex-col space-y-4 pb-24",
           notes.length === 0 && "h-full items-center justify-center",
         )}
       >

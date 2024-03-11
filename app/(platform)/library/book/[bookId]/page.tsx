@@ -43,7 +43,21 @@ const LibraryPage = async ({
     );
   }
 
-  return <BookPage book={book} notes={book.bookNotes} />;
+  const authors = await db.author.findMany({
+    where: {
+      userId: book.userId,
+    },
+  });
+
+  if (!authors) {
+    return (
+      <div className="flex flex-col w-full h-full items-center justify-center bg-neutral-200 p-5">
+        <p>Book not found</p>
+      </div>
+    );
+  }
+
+  return <BookPage book={book} authors={authors} notes={book.bookNotes} />;
 };
 
 export default LibraryPage;

@@ -93,7 +93,7 @@ const LibraryPage = () => {
       )}
       <div className="gap-4 md:pt-10 ">
         {filteredBooks ? (
-          <div className="grid grid-flow-row-dense lg:grid-cols-4 sm:grid-cols-2 grid-cols-1 space-y-[1px]">
+          <div className="grid grid-flow-row-dense lg:grid-cols-4 sm:grid-cols-2 grid-cols-1 space-y-[1px] mb-20">
             {filteredBooks.map((book) => (
               <BookWidget key={book.id} book={book} lock={false} />
             ))}
