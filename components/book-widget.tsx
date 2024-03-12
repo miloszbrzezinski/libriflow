@@ -28,7 +28,7 @@ export const BookWidget = ({ book, lock }: BookWidgetProps) => {
   return (
     <div
       onClick={onClick}
-      className="group flex p-2 bg-white md:rounded-lg shadow-md md:w-min w-full"
+      className="group flex p-2 border border-stone-300 bg-white w-full"
     >
       <div className="hidden min-w-48 items-center md:flex">
         {book.imageUrl.length > 0 ? (

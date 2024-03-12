@@ -82,9 +82,9 @@ const LibraryPage = () => {
         <TabButton param="status" value="wish_list" name="Wish list" />
       </div>
       {filteredBooks && filteredBooks.length === 0 && (
-        <div className="flex flex-col w-full h-full items-center justify-center space-y-5">
+        <div className="flex flex-col w-full h-72 items-center justify-center space-y-5">
           <p className="text-4xl text-slate-700">
-            You do not have any books yet
+            You do not have any books here yet
           </p>
           <Link href={"add-book"} className="hover:underline">
             Add first here
@@ -93,7 +93,7 @@ const LibraryPage = () => {
       )}
       <div className="gap-4 md:pt-10 ">
         {filteredBooks ? (
-          <div className="grid grid-flow-row-dense lg:grid-cols-4 sm:grid-cols-2 grid-cols-1 space-y-[1px] mb-20">
+          <div className="grid grid-flow-row-dense lg:grid-cols-2 sm:grid-cols-2 grid-cols-1 mb-20 overflow-y-scroll">
             {filteredBooks.map((book) => (
               <BookWidget key={book.id} book={book} lock={false} />
             ))}
