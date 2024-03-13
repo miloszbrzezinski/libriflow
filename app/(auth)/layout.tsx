@@ -12,7 +12,7 @@ const AuthLayout = ({ children }: { children: React.ReactNode }) => {
         <div className="md:w-[50%] md:h-full h-24 flex items-center justify-center">
           <p
             className={cn(
-              "md:text-9xl text-6xl font-thin select-none",
+              "md:text-9xl text-6xl font-thin select-none text-slate-800",
               headingFont.className,
             )}
           >

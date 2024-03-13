@@ -75,7 +75,7 @@ export const AuthorSelector = ({
                   { id: "", name: inputValue, imageUrl: "", userId: "" },
                 ]);
                 setAuthorName(inputValue);
-                setValue(inputValue);
+                setValue(inputValue.toLowerCase());
                 setOpen(false);
               }}
               className="w-full"
