@@ -8,7 +8,7 @@ const headingFont = localFont({
 const AuthLayout = ({ children }: { children: React.ReactNode }) => {
   return (
     <div className="h-full">
-      <main className="h-full bg-gradient-to-br from-amber-100/50  to-yellow-100/50 backdrop-blur-sm flex md:flex-row flex-col">
+      <main className="h-full bg-gradient-to-br from-amber-100/50  to-yellow-100/50 backdrop-blur-sm md:flex md:flex-row">
         <div className="md:w-[50%] md:h-full h-24 flex items-center justify-center">
           <p
             className={cn(
