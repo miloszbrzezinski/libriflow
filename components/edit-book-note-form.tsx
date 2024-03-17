@@ -202,7 +202,7 @@ const BookNoteForm = ({ bookNote, cancelEditing }: BookNoteFormProps) => {
                 </FormItem>
               )}
             />
-            <div className="md:hidden flex items-center justify-between space-x-10 px-2 w-full">
+            <div className="flex md:hidden items-center justify-between space-x-10 px-2 w-full">
               <Label>Page</Label>
               <FormField
                 control={form.control}
