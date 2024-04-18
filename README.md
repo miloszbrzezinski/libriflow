@@ -1,4 +1,28 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Libriflow
+
+Libriflow is a responsive web application designed to help users manage their personal book library. With Libriflow, you can add books and authors, track reading progress, and store notes or memorable quotes from each book. Built with a modern technology stack, this project is ideal for showcasing my skills in full-stack development.
+
+[Link to website](https://libriflow-zeta.vercel.app/home)
+
+## Technologies
+
+- **Frontend:** React, Next.js, Tailwind CSS
+- **Backend:** Next.js API Routes
+- **Database:** Prisma with PostgreSQL
+- **Authentication:** NextAuth
+- **Styling:** Tailwind CSS
+- **Deployment:** Vercel
+- **Other:** TypeScript
+
+## Features
+
+- **Manage Books and Authors:** Add, delete, and edit information about books and authors.
+- **Track Reading Progress:** Easily update your reading status from 'Unread' to 'Read'.
+- **Notes and Quotes:** Keep personal notes and memorable quotes associated with each book.
+- **Responsive Design:** Accessible on various devices, ensuring a seamless user experience.
+
+![alt text](https://raw.githubusercontent.com/miloszbrzezinski/personal-site/main/public/libriflow-book.png?token=GHSAT0AAAAAACJ2YMI4ZLTRAQ4YS6UWSCWWZRAWKLQ)
+
 
 ## Getting Started
 
