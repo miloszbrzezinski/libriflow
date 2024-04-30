@@ -21,7 +21,7 @@ Libriflow is a responsive web application designed to help users manage their pe
 - **Notes and Quotes:** Keep personal notes and memorable quotes associated with each book.
 - **Responsive Design:** Accessible on various devices, ensuring a seamless user experience.
 
-![alt text](https://raw.githubusercontent.com/miloszbrzezinski/personal-site/main/public/libriflow-book.png?token=GHSAT0AAAAAACJ2YMI4ZLTRAQ4YS6UWSCWWZRAWKLQ)
+![alt text](https://raw.githubusercontent.com/miloszbrzezinski/personal-site/main/public/libriflow-book.png?token=GHSAT0AAAAAACJ2YMI4TZGC7BRSWJUF3VAEZRQONAA)
 
 
 ## Getting Started
